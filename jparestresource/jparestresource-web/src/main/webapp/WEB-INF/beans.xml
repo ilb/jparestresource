@@ -58,7 +58,7 @@
     -->    
 
     <!-- Example aspectlock -->    
-    <!--<bean class="com.github.sadstool.redissonaspectlock.config.RedissonAspectLockAutoConfiguration"/>-->
+    <bean class="com.github.sadstool.redissonaspectlock.config.RedissonAspectLockAutoConfiguration"/>
     
     <!-- uncomment to enable AsyncTaskManager support -->
     <!--<bean id="asyncTaskManager" class="ru.ilb.common.jaxrs.async.AsyncTaskManager" destroy-method="destroy"/>-->

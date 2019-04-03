@@ -5,8 +5,6 @@
  */
 package ru.ilb.jparestresource.web;
 
-import com.github.sadstool.redissonaspectlock.annotation.LockKey;
-import com.github.sadstool.redissonaspectlock.annotation.Lockable;
 import io.swagger.annotations.Api;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Context;
@@ -16,7 +14,6 @@ import org.apache.cxf.jaxrs.ext.xml.XSLTTransform;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
 import ru.ilb.jparestresource.api.DocumentsResource;
 import ru.ilb.jparestresource.logic.DocumentLogic;
 import ru.ilb.jparestresource.mappers.DocumentMapper;
@@ -85,7 +82,7 @@ public class DocumentsResourceImpl implements DocumentsResource {
     @Override
     //@Cacheable("find")
     @XSLTTransform(value = "stylesheets/jparestresource/document.xsl", mediaTypes = "application/xhtml+xml", type = XSLTTransform.TransformType.SERVER)
-    @Lockable
+//    @Lockable
     public Document find(long documentId) {
         return documentMapper.createFromEntity(documentLogic.getDocument(documentId));
     }
