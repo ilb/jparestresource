@@ -1,0 +1,13 @@
+--- pom.xml.orig	2019-04-09 09:19:13.816353909 +0400
++++ pom.xml	2019-04-09 09:19:29.576353985 +0400
+@@ -24,6 +24,10 @@
+           <artifactId>maven-archetype-plugin</artifactId>
+           <version>3.0.1</version>
+         </plugin>
++        <plugin>
++          <artifactId>maven-deploy-plugin</artifactId>
++          <version>2.8.2</version>
++        </plugin>
+       </plugins>
+     </pluginManagement>
+   </build>
