@@ -25,7 +25,6 @@ import ru.ilb.jparestresource.view.Documents;
 
 @Path("documents")
 @Api("documents")
-//@CrossOriginResourceSharing(allowOrigins = {"http://area51.mil:31415"},allowCredentials = true)
 public class DocumentsResourceImpl implements DocumentsResource {
 
     @Autowired
