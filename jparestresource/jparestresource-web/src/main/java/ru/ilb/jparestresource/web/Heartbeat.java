@@ -21,6 +21,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -29,6 +30,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Path("heartbeat")
 @Api("heartbeat")
+@Component
 public class Heartbeat {
 
     @PersistenceContext(unitName = "jparestresource")

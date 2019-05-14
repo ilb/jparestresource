@@ -14,6 +14,8 @@ import org.apache.cxf.jaxrs.ext.xml.XSLTTransform;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import ru.ilb.jparestresource.api.DocumentsResource;
 import ru.ilb.jparestresource.logic.DocumentLogic;
 import ru.ilb.jparestresource.mappers.DocumentMapper;
@@ -25,6 +27,7 @@ import ru.ilb.jparestresource.view.Documents;
 
 @Path("documents")
 @Api("documents")
+@Service
 public class DocumentsResourceImpl implements DocumentsResource {
 
     @Autowired
@@ -70,7 +73,7 @@ public class DocumentsResourceImpl implements DocumentsResource {
 
     @Override
     public void createBatch(Documents documents) {
-        documentRepository.save(documentMapper.createFromDtos(documents.getDocuments()));
+        documentRepository.saveAll(documentMapper.createFromDtos(documents.getDocuments()));
     }
 
     @Override

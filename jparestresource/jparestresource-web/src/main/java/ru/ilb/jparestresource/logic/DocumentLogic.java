@@ -32,7 +32,7 @@ public class DocumentLogic {
     
     @Loggable(Loggable.INFO)
     public Document getDocument(long documentId){
-        return documentRepository.findOne(documentId);
+        return documentRepository.getOne(documentId);
     }
     
     
