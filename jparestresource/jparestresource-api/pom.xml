@@ -11,7 +11,7 @@
     <artifactId>jparestresource-api</artifactId>
     <packaging>jar</packaging>
     <properties>
-        <eclipselink.version>2.6.4</eclipselink.version>
+        <eclipselink.version>2.7.4</eclipselink.version>
     </properties>
     <name>jparestresource-api</name>
     <description>API shared module</description>
@@ -60,7 +60,7 @@
                                     <wadl>${basedir}/src/main/resources/schemas/jparestresource/application.wadl</wadl>
                                     <packagename>ru.ilb.jparestresource.api</packagename>
                                     <bindingFiles>
-                                        <bindingFile>${basedir}/src/main/resources/schemas/jparestresource/core.xjb</bindingFile>
+                                        <bindingFile>${basedir}/src/main/resources/schemas/jparestresource/global.xjb</bindingFile>
                                         <bindingFile>${basedir}/src/main/resources/schemas/jparestresource/view.xjb</bindingFile>
                                     </bindingFiles>
                                     <extraargs>

@@ -5,6 +5,7 @@
              xmlns:core="urn:ru:ilb:jparestresource:core"
 >    
     <grammars>
+        <include href="global.xsd" />
         <include href="command.xsd" />
         <include href="view.xsd" />
     </grammars>
