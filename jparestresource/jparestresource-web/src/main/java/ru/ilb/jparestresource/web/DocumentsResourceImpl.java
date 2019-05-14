@@ -9,13 +9,16 @@ import io.swagger.annotations.Api;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
+import org.apache.cxf.jaxrs.ext.MessageContext;
 import org.apache.cxf.jaxrs.ext.search.SearchContext;
 import org.apache.cxf.jaxrs.ext.xml.XSLTTransform;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import ru.ilb.jparestresource.api.DocumentResource;
 import ru.ilb.jparestresource.api.DocumentsResource;
 import ru.ilb.jparestresource.logic.DocumentLogic;
 import ru.ilb.jparestresource.mappers.DocumentMapper;
@@ -28,7 +31,7 @@ import ru.ilb.jparestresource.view.Documents;
 @Path("documents")
 @Api("documents")
 @Service
-public class DocumentsResourceImpl implements DocumentsResource {
+public class DocumentsResourceImpl implements DocumentsResource,ContextResource {
 
     @Autowired
     AuthorizationHandler authorizationHandler;
@@ -44,9 +47,22 @@ public class DocumentsResourceImpl implements DocumentsResource {
 
     private UriInfo uriInfo;
 
+
+    @Autowired
+    private ApplicationContext applicationContext;
+
+    private MessageContext messageContext;
+
     @Context
+    @Override
     public void setUriInfo(UriInfo uriInfo) {
         this.uriInfo = uriInfo;
+    }
+
+    @Override
+    @Context
+    public void setMessageContext(MessageContext messageContext) {
+        this.messageContext = messageContext;
     }
 
     @Autowired
@@ -77,21 +93,8 @@ public class DocumentsResourceImpl implements DocumentsResource {
     }
 
     @Override
-    public void remove(long documentId) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    //@Cacheable("find")
-    @XSLTTransform(value = "stylesheets/jparestresource/document.xsl", mediaTypes = "application/xhtml+xml", type = XSLTTransform.TransformType.SERVER)
-//    @Lockable
-    public Document find(long documentId) {
-        return documentMapper.createFromEntity(documentLogic.getDocument(documentId));
-    }
-
-    @Override
-    public void edit(long documentId, Document document) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public DocumentResource getDocumentResource(long documentId) {
+        return new DocumentResourceImpl(documentId, applicationContext, messageContext);
     }
 
 }

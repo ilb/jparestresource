@@ -9,8 +9,45 @@
         <include href="command.xsd" />
         <include href="view.xsd" />
     </grammars>
+    <resource_type id="documentResource">
+        <doc title="document resource">
+
+        </doc>
+        <method name="GET" id="find">
+            <doc>get document instance</doc>
+            <request></request>
+            <response>
+                <representation mediaType="application/xml" element="view:document">
+                    <doc>document data</doc>
+                </representation>
+                <representation mediaType="application/json">
+                    <doc>document data</doc>
+                </representation>
+                <representation mediaType="application/xhtml+xml">
+                    <doc>document data</doc>
+                </representation>
+            </response>
+        </method>
+        <method name="PUT" id="edit">
+            <doc>edit document instance</doc>
+            <request>
+                <representation mediaType="application/xml" element="view:document">
+                    <doc>document data</doc>
+                </representation>
+                <representation mediaType="application/json">
+                    <doc>document data</doc>
+                </representation>
+            </request>
+            <response status="204"></response>
+        </method>
+        <method name="DELETE" id="remove">
+            <doc>remove document instance</doc>
+            <request></request>
+            <response status="204"></response>
+        </method>
+    </resource_type>
     <resources>
-        <resource path="/documents">
+        <resource path="documents">
             <method name="GET" id="list">
                 <doc>List of documents</doc>
                 <request>
@@ -48,7 +85,7 @@
                     </representation>
                 </response>
             </method>
-            <resource path="/batch">
+            <resource path="batch">
                 <method name="POST" id="createBatch">
                     <doc>create batch document instances</doc>
                     <request>
@@ -62,45 +99,13 @@
                     <response status="204"></response>
                 </method>
             </resource>
-            <resource path="/{documentId}">
+            <resource path="{documentId}" id="documentResource" type="#documentResource">
                 <param name="documentId" style="template" type="xsd:long">
                     <doc>document id</doc>
                 </param>
-                <method name="DELETE" id="remove">
-                    <doc>remove document instance</doc>
-                    <request></request>
-                    <response status="204"></response>
-                </method>
-                <method name="GET" id="find">
-                    <doc>get document instance</doc>
-                    <request></request>
-                    <response>
-                        <representation mediaType="application/xml" element="view:document">
-                            <doc>document data</doc>
-                        </representation>
-                        <representation mediaType="application/json">
-                            <doc>document data</doc>
-                        </representation>
-                        <representation mediaType="application/xhtml+xml">
-                            <doc>document data</doc>
-                        </representation>                        
-                    </response>
-                </method>
-                <method name="PUT" id="edit">
-                    <doc>edit document instance</doc>
-                    <request>
-                        <representation mediaType="application/xml" element="view:document">
-                            <doc>document data</doc>
-                        </representation>
-                        <representation mediaType="application/json">
-                            <doc>document data</doc>
-                        </representation>
-                    </request>
-                    <response status="204"></response>
-                </method>
             </resource>
         </resource>
-        <resource path="/heartbeat">
+        <resource path="heartbeat">
             <method name="GET" id="heartbeat">
                 <response>
                     <representation mediaType="*/*">
