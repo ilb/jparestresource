@@ -10,13 +10,10 @@ import javax.ws.rs.Path;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import org.apache.cxf.jaxrs.ext.MessageContext;
-import org.apache.cxf.jaxrs.ext.search.SearchContext;
-import org.apache.cxf.jaxrs.ext.xml.XSLTTransform;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import ru.ilb.jparestresource.api.DocumentResource;
 import ru.ilb.jparestresource.api.DocumentsResource;
@@ -67,13 +64,6 @@ public class DocumentsResourceImpl implements DocumentsResource,ContextResource 
 
     @Autowired
     DocumentRepository documentRepository;
-
-    private SearchContext searchContext;
-
-    @Context
-    public void setSearchContext(SearchContext searchContext) {
-        this.searchContext = searchContext;
-    }
 
     private static final Logger LOG = LoggerFactory.getLogger(DocumentsResourceImpl.class);
 

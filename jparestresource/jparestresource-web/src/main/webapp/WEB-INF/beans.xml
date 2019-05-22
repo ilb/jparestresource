@@ -153,7 +153,7 @@
         </property>
     </bean>
     
-    <bean id="searchContextProvider" class="org.apache.cxf.jaxrs.ext.search.SearchContextProvider"/>
+    <!--<bean id="searchContextProvider" class="org.apache.cxf.jaxrs.ext.search.SearchContextProvider"/>-->
 
     <util:map id="namespaceMap" map-class="java.util.Hashtable">
         <!--<entry key="urn:ru:ilb:jparestresource:model" value="model"/>-->
@@ -241,7 +241,7 @@
             <ref bean="jaxbProvider"/>
             <ref bean="xsltProvider"/>
             <ref bean="jsonProvider"/>
-            <ref bean="searchContextProvider"/>
+            <!--<ref bean="searchContextProvider"/>-->
             <!--<ref bean="exceptionHandler"/>-->
             <ref bean="validationExceptionMapper"/>
             <ref bean="authorizationHandler"/>
