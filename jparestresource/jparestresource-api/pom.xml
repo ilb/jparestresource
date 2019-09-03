@@ -6,7 +6,7 @@
         <artifactId>jparestresource</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    
+
     <groupId>ru.ilb.jparestresource</groupId>
     <artifactId>jparestresource-api</artifactId>
     <packaging>jar</packaging>
@@ -24,17 +24,17 @@
         <dependency>
             <groupId>com.migesok</groupId>
             <artifactId>jaxb-java-time-adapters</artifactId>
-            <version>1.1.3</version>        
+            <version>1.1.3</version>
         </dependency>
-        <!-- dependency for <representation mediaType="multipart/form-data" />  
+        <!-- dependency for <representation mediaType="multipart/form-data" />
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-frontend-jaxrs</artifactId>
             <version>${apache-cxf.version}</version>
             <scope>compile</scope>
-        </dependency>        
+        </dependency>
         -->
-        
+
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
@@ -68,7 +68,7 @@
                                         <extraarg>-inheritResourceParams</extraarg>
                                         <extraarg>-javaDocs</extraarg>
                                         <extraarg>-xjc-Xjavadoc</extraarg>
-                                        <!-- repMap examples 
+                                        <!-- repMap examples
                                         <extraarg>-repMap</extraarg>
                                         <extraarg>application/*=java.io.InputStream</extraarg>
                                         <extraarg>-repMap</extraarg>
@@ -93,7 +93,7 @@
                                         <extraarg>-xjc-Xxew</extraarg>
                                         <extraarg>-xjc-Xxew:instantiate lazy</extraarg>
                                         -->
-                                                
+
                                         <extraarg>-xjc-Xannotate</extraarg>
                                         <extraarg>-xjc-Xinheritance</extraarg>
                                         <!--<extraarg>-xjc-XenumValue</extraarg>-->
@@ -135,7 +135,7 @@
                         <groupId>org.apache.cxf.xjcplugins</groupId>
                         <artifactId>cxf-xjc-javadoc</artifactId>
                         <version>3.0.5</version>
-                    </dependency>                    
+                    </dependency>
                     <dependency>
                         <groupId>org.eclipse.persistence</groupId>
                         <artifactId>org.eclipse.persistence.moxy</artifactId>
@@ -145,17 +145,17 @@
             </plugin>
         </plugins>
     </build>
-    
- 
+
+
     <profiles>
         <profile>
             <id>site</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
-            </activation>            
+            </activation>
             <build>
                 <plugins>
-            
+
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>xml-maven-plugin</artifactId>
@@ -174,14 +174,14 @@
                                     <dir>${basedir}/src/main/resources/schemas/jparestresource</dir>
                                     <includes>
                                         <include>application.wadl</include>
-                                    </includes>                            
+                                    </includes>
                                     <stylesheet>${basedir}/src/site/wadl_stylesheets/wadl_documentation-2009-02.xsl</stylesheet>
                                     <outputDir>${basedir}/src/site/xhtml</outputDir>
                                     <fileMappers>
                                         <fileMapper implementation="org.codehaus.plexus.components.io.filemappers.FileExtensionMapper">
                                             <targetExtension>.xhtml</targetExtension>
                                         </fileMapper>
-                                    </fileMappers>                            
+                                    </fileMappers>
                                 </transformationSet>
                             </transformationSets>
                         </configuration>
@@ -191,11 +191,11 @@
                                 <artifactId>saxon</artifactId>
                                 <version>8.7</version>
                             </dependency>
-                        </dependencies>                
-                    </plugin>            
-                    
+                        </dependencies>
+                    </plugin>
+
                 </plugins>
             </build>
-        </profile>     
+        </profile>
     </profiles>
 </project>

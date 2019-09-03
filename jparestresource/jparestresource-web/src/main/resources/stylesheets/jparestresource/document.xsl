@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet 
+<xsl:stylesheet
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
@@ -18,8 +18,8 @@
     <xsl:param name="absolute.path"/>
     <xsl:param name="base.path"/>
     <xsl:param name="relative.path"/>
-    <xsl:param name="xslt.template"/>    
-    
+    <xsl:param name="xslt.template"/>
+
     <xsl:param name="documentId"/>
     <xsl:strip-space elements="*" />
 
@@ -32,29 +32,37 @@
             <body>
                 <h1>Document <xsl:value-of select="$documentId"/></h1>
                 <xsl:apply-templates />
-                
-                
+
+
                 <table border="1">
                     <caption>xslt params</caption>
                     <tr>
                         <td>absolute.path</td>
-                        <td><xsl:value-of select="$absolute.path"/></td>
+                        <td>
+                            <xsl:value-of select="$absolute.path"/>
+                        </td>
                     </tr>
                     <tr>
                         <td>base.path</td>
-                        <td><xsl:value-of select="$base.path"/></td>
+                        <td>
+                            <xsl:value-of select="$base.path"/>
+                        </td>
                     </tr>
                     <tr>
                         <td>relative.path</td>
-                        <td><xsl:value-of select="$relative.path"/></td>
+                        <td>
+                            <xsl:value-of select="$relative.path"/>
+                        </td>
                     </tr>
                     <tr>
                         <td>xslt.template</td>
-                        <td><xsl:value-of select="$xslt.template"/></td>
+                        <td>
+                            <xsl:value-of select="$xslt.template"/>
+                        </td>
                     </tr>
-                    
+
                 </table>
-                
+
             </body>
         </html>
     </xsl:template>
@@ -62,22 +70,30 @@
         <table border="1">
             <tr>
                 <td>id</td>
-                <td><xsl:value-of select="view:id"/></td>
+                <td>
+                    <xsl:value-of select="view:id"/>
+                </td>
             </tr>
             <tr>
                 <td>displayName</td>
-                <td><xsl:value-of select="view:displayName"/></td>
+                <td>
+                    <xsl:value-of select="view:displayName"/>
+                </td>
             </tr>
             <tr>
                 <td>description</td>
-                <td><xsl:value-of select="view:description"/></td>
+                <td>
+                    <xsl:value-of select="view:description"/>
+                </td>
             </tr>
             <tr>
                 <td>docDate</td>
-                <td><xsl:value-of select="view:docDate"/></td>
+                <td>
+                    <xsl:value-of select="view:docDate"/>
+                </td>
             </tr>
-            
+
         </table>
     </xsl:template>
-    
+
 </xsl:stylesheet>

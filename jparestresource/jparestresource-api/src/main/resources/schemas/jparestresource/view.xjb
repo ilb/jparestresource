@@ -11,7 +11,7 @@
                schemaLocation="view.xsd" node="/xsd:schema"
 >
     <!-- example: make implementation class in JAXB binding -->
-    
+
     <!--
     <jaxb:bindings node="//xsd:complexType[@name='DocumentType']">
         <jaxb:class  implClass="package.Document"/>
@@ -22,6 +22,6 @@
         </jaxb:property>
     </jaxb:bindings>
     -->
-    
+
 </jaxb:bindings>
 

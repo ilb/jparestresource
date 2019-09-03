@@ -22,7 +22,9 @@ import javax.ws.rs.core.UriInfo;
  * @author slavb
  */
 public interface ContextResource {
+
     public void setMessageContext(org.apache.cxf.jaxrs.ext.MessageContext messageContext);
+
     public void setUriInfo(UriInfo uriInfo);
-    
+
 }

@@ -40,7 +40,7 @@
         <role-name>*</role-name>
     </security-role>
     -->
-    
+
     <resource-ref>
         <description>jparestresource</description>
         <res-ref-name>jdbc/jparestresource</res-ref-name>
@@ -54,21 +54,21 @@
         <env-entry-type>java.lang.String</env-entry-type>
         <env-entry-value>root</env-entry-value>
     </env-entry>
-    
-    
+
+
     <!-- uncomment for xslt support, see also beans.xml for uriResolver and xsltProvider
     To make xslt templates refresh on the fly, you need yo override variable refreshTemplates
     in local ${catalina.base}/conf/context.xml with value "true", example:
     <Environment name="refreshTemplates" value="true" type="java.lang.Boolean" override="false"/>
     Also checkbox "Copy Static Resources On Save" should be enabled in project options in Netbeans ("Run" tab). -->
-    
+
     <env-entry>
         <description>reload xslt templates on every request</description>
         <env-entry-name>refreshTemplates</env-entry-name>
         <env-entry-type>java.lang.Boolean</env-entry-type>
         <env-entry-value>false</env-entry-value>
     </env-entry>
-    
+
     <!-- uncomment for resource link
     <resource-env-ref>
         <description>workflow resource</description>
@@ -76,7 +76,7 @@
         <resource-env-ref-type>javax.jms.Queue</resource-env-ref-type>
     </resource-env-ref>
     -->
-    
+
     <!-- task scheduler config, see also web.xml -->
     <!--
     <env-entry>
@@ -98,14 +98,14 @@
         <env-entry-value>0</env-entry-value>
     </env-entry>
     -->
-    
+
     <!-- tasks schedule -->
     <!--
     <env-entry>
         <description>example task description</description>
         <env-entry-name>scheduleImportItemsSource</env-entry-name>
         <env-entry-type>java.lang.String</env-entry-type>
-        <env-entry-value>0 0 6 * * ?</env-entry-value> 
-    </env-entry>    
+        <env-entry-value>0 0 6 * * ?</env-entry-value>
+    </env-entry>
     -->
 </web-app>

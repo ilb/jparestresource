@@ -9,7 +9,7 @@
                     <xsd:documentation>Internal document identificator</xsd:documentation>
                 </xsd:annotation>
             </xsd:element>
-                
+
             <xsd:element minOccurs="0" name="displayName" type="xsd:string">
                 <xsd:annotation>
                     <xsd:documentation>Name of the document</xsd:documentation>
@@ -24,12 +24,12 @@
                 <xsd:annotation>
                     <xsd:documentation>Date of the document</xsd:documentation>
                 </xsd:annotation>
-            </xsd:element>                
+            </xsd:element>
             <xsd:element maxOccurs="unbounded" minOccurs="0" ref="docfile">
                 <xsd:annotation>
                     <xsd:documentation>Attached files</xsd:documentation>
                 </xsd:annotation>
-            </xsd:element>                
+            </xsd:element>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:complexType name="docfile">

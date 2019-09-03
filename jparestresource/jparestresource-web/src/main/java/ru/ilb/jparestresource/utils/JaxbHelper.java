@@ -37,8 +37,7 @@ public class JaxbHelper {
      * unmarshalls object instance
      *
      * @param <T>
-     * @param source example from String: new StreamSource(new
-     * java.io.StringReader(string)), from InputStream: new StreamSource(is)
+     * @param source example from String: new StreamSource(new java.io.StringReader(string)), from InputStream: new StreamSource(is)
      * @param type
      * @param mediaType
      * @return T
@@ -63,11 +62,9 @@ public class JaxbHelper {
         return JaxbUtil.unmarshal(jaxbContext, data, type, mediaType);
     }
 
-
     public String marshal(Object obj, String mediaType) {
         JAXBContext jaxbContext = jaxbContextResolver.getContext(obj.getClass());
         return JaxbUtil.marshal(jaxbContext, obj, mediaType);
     }
-
 
 }

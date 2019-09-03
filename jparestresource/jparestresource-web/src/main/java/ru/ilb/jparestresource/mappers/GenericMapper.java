@@ -24,8 +24,8 @@ import org.mapstruct.MappingTarget;
  * @param <E> entity class
  * @param <D> dto class
  */
-public interface GenericMapper<E,D> {
-    
+public interface GenericMapper<E, D> {
+
     D createFromEntity(E entity);
 
     E createFromDto(D dto);
@@ -35,5 +35,5 @@ public interface GenericMapper<E,D> {
     List<D> createFromEntities(List<E> entities);
 
     List<E> createFromDtos(List<D> dtos);
-    
+
 }

@@ -51,8 +51,8 @@ public class SchemaGenerator {
             ClassMetadata metadata = factory.getMetadataReader(resource).getClassMetadata();
             classes.add(ClassUtils.forName(metadata.getClassName(), ClassUtils.getDefaultClassLoader()));
         }
-        
-        JAXBContext jc = JAXBContext.newInstance(classes.stream().toArray(Class[]::new),contextProperties);
+
+        JAXBContext jc = JAXBContext.newInstance(classes.stream().toArray(Class[]::new), contextProperties);
 
         jc.generateSchema(new SchemaOutputResolver() {
 

@@ -27,13 +27,13 @@ import ru.ilb.jparestresource.repositories.DocumentRepository;
  */
 @Component
 public class DocumentLogic {
+
     @Autowired
     DocumentRepository documentRepository;
-    
+
     @Loggable(Loggable.INFO)
-    public Document getDocument(long documentId){
+    public Document getDocument(long documentId) {
         return documentRepository.getOne(documentId);
     }
-    
-    
+
 }

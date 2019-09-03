@@ -28,7 +28,7 @@ import ru.ilb.jparestresource.view.Documents;
 @Path("documents")
 @Api("documents")
 @Service
-public class DocumentsResourceImpl implements DocumentsResource,ContextResource {
+public class DocumentsResourceImpl implements DocumentsResource, ContextResource {
 
     @Autowired
     AuthorizationHandler authorizationHandler;
@@ -38,12 +38,11 @@ public class DocumentsResourceImpl implements DocumentsResource,ContextResource 
 
     @Autowired
     private DocumentMapper documentMapper;
-    
-    @Autowired 
+
+    @Autowired
     private DocumentLogic documentLogic;
 
     private UriInfo uriInfo;
-
 
     @Autowired
     private ApplicationContext applicationContext;

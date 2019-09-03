@@ -21,7 +21,7 @@ import javax.ws.rs.container.ContainerRequestFilter;
 import javax.ws.rs.core.SecurityContext;
 
 /**
- * 
+ *
  *
  * @author slavb
  */

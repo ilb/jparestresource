@@ -32,18 +32,16 @@ import ru.ilb.jparestresource.model.Document;
 public interface DocumentRepository extends JpaRepository<Document, Long> {
 
     /**
-     * Только для примера
-     * Не работает передача даты параметром, нужно пользоваться через EntityManager 
-     * или реализовать https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.custom-implementations
+     * Только для примера Не работает передача даты параметром, нужно пользоваться через EntityManager или реализовать
+     * https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.custom-implementations
+     *
      * @param id
-     * @return 
+     * @return
      */
     @org.springframework.data.jpa.repository.QueryHints(value = {
-        @QueryHint(name = QueryHints.AS_OF, value = "2017-04-11 10:00:00")
-        ,
-    @QueryHint(name = QueryHints.MAINTAIN_CACHE, value = HintValues.FALSE)
-        ,
-    @QueryHint(name = QueryHints.READ_ONLY, value = HintValues.TRUE)},
+        @QueryHint(name = QueryHints.AS_OF, value = "2017-04-11 10:00:00"),
+        @QueryHint(name = QueryHints.MAINTAIN_CACHE, value = HintValues.FALSE),
+        @QueryHint(name = QueryHints.READ_ONLY, value = HintValues.TRUE)},
             forCounting = false)
     @Query("Select d From Document d where d.id=:id")
     Document getOnDate(@Param("id") Long id/*, @Param("onDate") String onDate*/);

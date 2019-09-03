@@ -92,16 +92,16 @@ public class Application extends JpaBaseConfiguration {
 //        endpoint.setFeatures(Arrays.asList(new LoggingFeature()));
 //        return endpoint.create();
 //    }
-    
     @Bean
     public MOXyJsonProvider jsonProvider() {
         return new org.eclipse.persistence.jaxb.rs.MOXyJsonProvider();
     }
+
     @Bean
     public JaxbContextResolver jaxbContextResolver() {
         return new JaxbContextResolver();
     }
-    
+
     @Bean
     public AuthorizationHandler authorizationHandler() {
         AuthorizationHandler authorizationHandler = new AuthorizationHandler();
@@ -113,15 +113,15 @@ public class Application extends JpaBaseConfiguration {
 //    public DataSource dataSource() throws NamingException {
 //        return (DataSource) new JndiTemplate().lookup(env.getProperty("jdbc.url"));
 //    }
-    
     /**
      * FIXME
+     *
      * @return
      */
     public DataSource dataSource() {
         return getDataSource();
     }
-    
+
     @Override
     //@PersistenceContext(unitName = "jparestresource")
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(EntityManagerFactoryBuilder factoryBuilder) {
@@ -129,8 +129,7 @@ public class Application extends JpaBaseConfiguration {
         entityManagerFactory.setPersistenceUnitName("jparestresource");
         return entityManagerFactory;
     }
-    
-    
+
     @Override
     protected AbstractJpaVendorAdapter createJpaVendorAdapter() {
         return new EclipseLinkJpaVendorAdapter();
