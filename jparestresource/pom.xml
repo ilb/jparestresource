@@ -30,10 +30,6 @@
     </scm>
     -->
     <distributionManagement>
-        <site>
-            <id>docsserver</id>
-            <url>dav:https://docs.ilb.ru/apps/jparestresource/</url>
-        </site>
         <snapshotRepository>
             <id>ossrh</id>
             <name>Sonatype Nexus snapshot repository</name>
