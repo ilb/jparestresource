@@ -6,7 +6,6 @@
         <artifactId>jparestresource</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-
     <groupId>ru.ilb.jparestresource</groupId>
     <artifactId>jparestresource-api</artifactId>
     <packaging>jar</packaging>
@@ -34,7 +33,6 @@
             <scope>compile</scope>
         </dependency>
         -->
-
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
@@ -93,7 +91,6 @@
                                         <extraarg>-xjc-Xxew</extraarg>
                                         <extraarg>-xjc-Xxew:instantiate lazy</extraarg>
                                         -->
-
                                         <extraarg>-xjc-Xannotate</extraarg>
                                         <extraarg>-xjc-Xinheritance</extraarg>
                                         <!--<extraarg>-xjc-XenumValue</extraarg>-->
@@ -145,8 +142,6 @@
             </plugin>
         </plugins>
     </build>
-
-
     <profiles>
         <profile>
             <id>site</id>
@@ -155,7 +150,6 @@
             </activation>
             <build>
                 <plugins>
-
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>xml-maven-plugin</artifactId>
@@ -193,7 +187,6 @@
                             </dependency>
                         </dependencies>
                     </plugin>
-
                 </plugins>
             </build>
         </profile>

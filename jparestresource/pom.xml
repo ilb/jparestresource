@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>ru.ilb.jparestresource</groupId>
     <artifactId>jparestresource</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -46,7 +45,6 @@
             <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
-
     <modules>
         <module>jparestresource-web</module>
         <module>jparestresource-api</module>
@@ -59,8 +57,9 @@
         <doclint>none</doclint>
         <apache-cxf.version>3.3.1</apache-cxf.version>
         <ilb-common.version>1.29</ilb-common.version>
-        <maven-source-plugin.version>2.4</maven-source-plugin.version>
+        <maven-source-plugin.version>3.0.1</maven-source-plugin.version>
         <maven-javadoc-plugin.version>3.0.1</maven-javadoc-plugin.version>
+        <maven.test.skip>false</maven.test.skip>
     </properties>
     <build>
         <pluginManagement>
