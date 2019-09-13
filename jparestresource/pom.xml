@@ -24,9 +24,11 @@
         <url>https://github.com/ilb/jparestresource</url>
         <tag>HEAD</tag>
     </scm>
-    <!-- use local svn
+    <!-- use bb svn -->
+    <!--
     <scm>
         <connection>scm:svn:https://svn.ilb.ru/repos/jparestresource/trunk</connection>
+        <url>https://svn.ilb.ru/repos/jparestresource/trunk</url>
     </scm>
     -->
     <distributionManagement>
@@ -55,7 +57,7 @@
         <ilb-common.version>1.29</ilb-common.version>
         <maven-source-plugin.version>3.0.1</maven-source-plugin.version>
         <maven-javadoc-plugin.version>3.0.1</maven-javadoc-plugin.version>
-        <maven.test.skip>false</maven.test.skip>
+        <maven.test.skip>true</maven.test.skip>
     </properties>
     <build>
         <pluginManagement>
