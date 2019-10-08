@@ -279,6 +279,26 @@
       </h3>
       <p>Если все сделано по инструкции, а ресурс в браузере отвечает 404, 500 или другую ошибку, необходимо проверить, есть ли ошибки при старте приложения или в момент обращения к сервису. Это можно видеть во вкладке Output - Apache Tomcat. Если такой вкладки нет, нужно открыть блок Services (Ctrl-5), развернуть Server -&gt; Tomcat и выбрать View Server Output. В данном логе пишуться отладочные сообщения при старте сервлета и трейсы от исключений. Они бывают довольно длинные, но весь трейс изучать не нужно. В трейсе нужно найти знакомый класс (он будет подчеркнут ссылкой) и мышкой перейти в него для поиска причины ошибки. Если ни одного знакомого класса нет, нужно искать текст ошибки в Google. Во вкладке Output - Apache Tomcat Log можно видеть журнал приложения, если оно пользуется им (например через Logger). </p>
       <p>Если при открытии ресурса выходит ошибка "No root resource matching request path {} has been found", необходимо проверить наличие аннотации @Path у класса-ресурса (аннтация ресурса должна дублировать аннотацию интерфейса). </p>
+      <h2 id="java_lang_OutOfMemoryError:_Java_heap_space">
+        <a class="anchor" href="#java_lang_OutOfMemoryError:_Java_heap_space">java.lang.OutOfMemoryError: Java heap space</a>
+      </h2>
+      <ol>
+        <li>
+          <p>Проверить наличие @Transactional у методов работы с БД (для получения коротко живущего EntityManager)</p>
+        </li>
+        <li>
+          <p>Для больших выборок использовать @QueryHint(name = org.eclipse.persistence.config.QueryHints.CACHE_RETRIEVE_MODE, value = "BYPASS") для того, чтобы данные выгруженные из БД не засоряли кэш</p>
+        </li>
+        <li>
+          <p>Для выборок без модификации данных использовать @QueryHint(name = org.eclipse.persistence.config.QueryHints.READ_ONLY, value = HintValues.TRUE)</p>
+        </li>
+        <li>
+          <p>Настроить режим WEAK для кэша: <b>&lt;property name="eclipselink.persistence-context.reference-mode" value="WEAK"/&gt;</b>             / <b>map.put(PersistenceUnitProperties.PERSISTENCE_CONTEXT_REFERENCE_MODE, "WEAK");</b> для того, чтобы GC мог подчищать не используемые данные.</p>
+        </li>
+        <li>
+          <p>По возможности использовать локальные переменные.</p>
+        </li>
+      </ol>
       <h3 id="osibki_lokal_nogo_tomkata">
         <a class="anchor" href="#osibki_lokal_nogo_tomkata">Ошибки локального томката</a>
       </h3>
