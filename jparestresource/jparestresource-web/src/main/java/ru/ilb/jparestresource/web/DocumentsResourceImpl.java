@@ -6,6 +6,7 @@
 package ru.ilb.jparestresource.web;
 
 import io.swagger.annotations.Api;
+import javax.inject.Named;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
@@ -27,6 +28,7 @@ import ru.ilb.jparestresource.view.Document;
 import ru.ilb.jparestresource.view.Documents;
 
 @Path("documents")
+@Named
 public class DocumentsResourceImpl implements DocumentsResource, ContextResource {
 
     @Autowired

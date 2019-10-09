@@ -17,6 +17,7 @@ package ru.ilb.jparestresource.web;
 
 import io.swagger.annotations.Api;
 import java.sql.Connection;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.ws.rs.GET;
@@ -33,8 +34,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Component
 public class Heartbeat {
 
-    @PersistenceContext(unitName = "jparestresource")
-    private EntityManager em;
+    @Inject
+    EntityManager em;
 
     @GET
     @Transactional
