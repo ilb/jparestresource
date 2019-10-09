@@ -68,7 +68,6 @@ import ru.ilb.jparestresource.providers.AuthorizationHandler;
 //@PropertySource("application.properties")
 @EnableTransactionManagement(mode = AdviceMode.ASPECTJ)
 @EnableCaching(mode = AdviceMode.ASPECTJ)
-
 public class Application extends JpaBaseConfiguration {
 
     @Autowired
@@ -82,52 +81,12 @@ public class Application extends JpaBaseConfiguration {
         super(dataSource, properties, jtaTransactionManager, transactionManagerCustomizers);
     }
 
-//    @Bean
-//    public Server rsServer() {
-//        JAXRSServerFactoryBean endpoint = new JAXRSServerFactoryBean();
-//        endpoint.setBus(bus);
-//
-//        //endpoint.setServiceBeans(Arrays.<Object>asList(new HelloServiceImpl1(), new HelloServiceImpl2()));
-//        endpoint.setAddress("/");
-//        endpoint.setFeatures(Arrays.asList(new LoggingFeature()));
-//        return endpoint.create();
-//    }
-    @Bean
-    public MOXyJsonProvider jsonProvider() {
-        return new org.eclipse.persistence.jaxb.rs.MOXyJsonProvider();
-    }
-
-    @Bean
-    public JaxbContextResolver jaxbContextResolver() {
-        return new JaxbContextResolver();
-    }
 
     @Bean
     public AuthorizationHandler authorizationHandler() {
         AuthorizationHandler authorizationHandler = new AuthorizationHandler();
         //authorizationHandler.setCurrentAuditor("ide");
         return authorizationHandler;
-    }
-
-//    @Bean
-//    public DataSource dataSource() throws NamingException {
-//        return (DataSource) new JndiTemplate().lookup(env.getProperty("jdbc.url"));
-//    }
-    /**
-     * FIXME
-     *
-     * @return
-     */
-    public DataSource dataSource() {
-        return getDataSource();
-    }
-
-    @Override
-    //@PersistenceContext(unitName = "jparestresource")
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory(EntityManagerFactoryBuilder factoryBuilder) {
-        LocalContainerEntityManagerFactoryBean entityManagerFactory = super.entityManagerFactory(factoryBuilder);
-        entityManagerFactory.setPersistenceUnitName("jparestresource");
-        return entityManagerFactory;
     }
 
     @Override

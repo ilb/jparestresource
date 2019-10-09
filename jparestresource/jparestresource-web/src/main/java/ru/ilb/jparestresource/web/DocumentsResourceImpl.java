@@ -15,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.ilb.jparestresource.api.DocumentResource;
 import ru.ilb.jparestresource.api.DocumentsResource;
 import ru.ilb.jparestresource.logic.DocumentLogic;
@@ -26,8 +27,6 @@ import ru.ilb.jparestresource.view.Document;
 import ru.ilb.jparestresource.view.Documents;
 
 @Path("documents")
-@Api("documents")
-@Service
 public class DocumentsResourceImpl implements DocumentsResource, ContextResource {
 
     @Autowired
@@ -67,16 +66,19 @@ public class DocumentsResourceImpl implements DocumentsResource, ContextResource
     private static final Logger LOG = LoggerFactory.getLogger(DocumentsResourceImpl.class);
 
     @Override
+    @Transactional
     public Documents list(Integer limit, String order) {
         return documentMapper.createWrapperFromEntities(documentRepository.findAll());
     }
 
     @Override
+    @Transactional
     public long create(Document document) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
+    @Transactional
     public void createBatch(Documents documents) {
         documentRepository.saveAll(documentMapper.createFromDtos(documents.getDocuments()));
     }

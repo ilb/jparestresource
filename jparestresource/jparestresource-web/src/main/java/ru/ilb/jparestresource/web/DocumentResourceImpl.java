@@ -21,12 +21,14 @@ import org.springframework.beans.factory.annotation.Autowire;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.ApplicationContext;
+import org.springframework.transaction.annotation.Transactional;
 import ru.ilb.jparestresource.api.DocumentResource;
 import ru.ilb.jparestresource.logic.DocumentLogic;
 import ru.ilb.jparestresource.mappers.DocumentMapper;
 import ru.ilb.jparestresource.view.Document;
 
 @Configurable(preConstruction = true, dependencyCheck = true, autowire = Autowire.BY_NAME)
+@Transactional
 public class DocumentResourceImpl implements DocumentResource {
 
     @Autowired

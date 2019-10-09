@@ -53,10 +53,8 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <!-- https://blog.joda.org/2014/02/turning-off-doclint-in-jdk-8-javadoc.html -->
         <doclint>none</doclint>
-        <apache-cxf.version>3.3.1</apache-cxf.version>
-        <ilb-common.version>1.29</ilb-common.version>
-        <maven-source-plugin.version>3.0.1</maven-source-plugin.version>
-        <maven-javadoc-plugin.version>3.0.1</maven-javadoc-plugin.version>
+        <apache-cxf.version>3.3.3</apache-cxf.version>
+        <ilb-common.version>1.31-SNAPSHOT</ilb-common.version>
         <maven.test.skip>true</maven.test.skip>
     </properties>
     <build>

@@ -13,7 +13,6 @@
     <description>REST service</description>
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
-        <mysql-connector.version>8.0.13</mysql-connector.version>
         <eclipselink.version>2.7.4</eclipselink.version>
         <javax-persistence.version>2.2.1</javax-persistence.version>
         <javax.ws.rs-api.version>2.1</javax.ws.rs-api.version>
@@ -60,12 +59,6 @@
             <groupId>ru.ilb.jparestresource</groupId>
             <artifactId>jparestresource-api</artifactId>
             <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>ru.ilb.jparestresource</groupId>
-            <artifactId>jparestresource-api</artifactId>
-            <version>${project.version}</version>
-            <classifier>javadoc</classifier>
         </dependency>
         <!-- @com.jcabi.aspects.Loggable and other, see http://www.yegor256.com/2014/06/01/aop-aspectj-java-method-logging.html-->
         <dependency>
@@ -150,6 +143,11 @@
         <dependency>
             <groupId>ru.ilb.common</groupId>
             <artifactId>common-jpa</artifactId>
+            <version>${ilb-common.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ru.ilb.common</groupId>
+            <artifactId>common-springboot</artifactId>
             <version>${ilb-common.version}</version>
         </dependency>
         <!-- swagger api and ui support -->
@@ -248,214 +246,54 @@
                     </compilerArgs>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>2.10</version>
-                <executions>
-                    <execution>
-                        <id>unpack</id>
-                        <phase>validate</phase>
-                        <goals>
-                            <goal>unpack</goal>
-                        </goals>
-                        <configuration>
-                            <artifactItems>
-                                <!-- packaging org.eclipse.persistence.jaxb.rs.MOXyJsonProvider required becouse of javax.ws.rs-api conflicts -->
-                                <artifactItem>
-                                    <groupId>org.eclipse.persistence</groupId>
-                                    <artifactId>org.eclipse.persistence.moxy</artifactId>
-                                    <version>${eclipselink.version}</version>
-                                    <type>jar</type>
-                                    <overWrite>false</overWrite>
-                                    <outputDirectory>${project.build.directory}/classes</outputDirectory>
-                                    <includes>org/eclipse/persistence/jaxb/rs/*.class</includes>
-                                </artifactItem>
-                                <!--                                <artifactItem>
-                                    <groupId>org.eclipse.persistence</groupId>
-                                    <artifactId>org.eclipse.persistence.dbws</artifactId>
-                                    <version>${eclipselink.version}</version>
-                                    <type>jar</type>
-                                    <overWrite>false</overWrite>
-                                    <outputDirectory>${project.build.directory}/classes</outputDirectory>
-                                </artifactItem>-->
-                            </artifactItems>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>3.2.2</version>
-                <configuration>
-                    <!-- WEB-INF/lib/eclipselink-*.jar -->
-                    <packagingExcludes>WEB-INF/lib/org.eclipse.persistence*.jar,WEB-INF/lib/javax.persistence-*.jar,WEB-INF/lib/jakarta.persistence-*.jar,WEB-INF/lib/mysql-connector-java-*.jar</packagingExcludes>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
     <profiles>
         <profile>
-            <id>java2wadl</id>
+            <id>java-8</id>
             <activation>
-                <activeByDefault>false</activeByDefault>
+                <jdk>1.8</jdk>
             </activation>
             <build>
                 <plugins>
                     <plugin>
-                        <groupId>org.apache.cxf</groupId>
-                        <artifactId>cxf-java2wadl-plugin</artifactId>
-                        <version>${apache-cxf.version}</version>
-                        <executions>
-                            <execution>
-                                <id>parsejavadoc</id>
-                                <phase>generate-sources</phase>
-                                <goals>
-                                    <goal>parsejavadoc</goal>
-                                </goals>
-                            </execution>
-                            <execution>
-                                <id>process-classes</id>
-                                <phase>process-classes</phase>
-                                <goals>
-                                    <goal>java2wadl</goal>
-                                </goals>
-                                <configuration>
-                                    <classResourceNames>
-                                        <classResourceName>ru.ilb.jparestresource.web.DocumentsResourceImpl</classResourceName>
-                                        <classResourceName>ru.ilb.jparestresource.web.Heartbeat</classResourceName>
-                                    </classResourceNames>
-                                    <docProvider>org.apache.cxf.maven_plugin.javatowadl.ResourceMapJavaDocProvider</docProvider>
-                                    <attachWadl>true</attachWadl>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>java2swagger</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.cxf</groupId>
-                        <artifactId>cxf-java2swagger-plugin</artifactId>
-                        <version>${apache-cxf.version}</version>
-                        <dependencies>
-                            <dependency>
-                                <groupId>com.google.guava</groupId>
-                                <artifactId>guava</artifactId>
-                                <version>23.2-jre</version>
-                            </dependency>
-                        </dependencies>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-war-plugin</artifactId>
+                        <version>3.2.2</version>
                         <configuration>
-                            <resourcePackages>
-                                <resourcePackage>ru.ilb.jparestresource.web</resourcePackage>
-                            </resourcePackages>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <id>process-classes</id>
-                                <phase>process-classes</phase>
-                                <goals>
-                                    <goal>java2swagger</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>swaggerclient</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>io.swagger</groupId>
-                        <artifactId>swagger-codegen-maven-plugin</artifactId>
-                        <version>2.3.1</version>
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>generate</goal>
-                                </goals>
-                                <phase>process-classes</phase>
-                                <configuration>
-                                    <inputSpec>${basedir}/target/generated/json/swagger.json</inputSpec>
-                                    <language>php</language>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>schemagen</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>jaxb2-maven-plugin</artifactId>
-                        <version>2.3.1</version>
-                        <executions>
-                            <execution>
-                                <id>schemagen</id>
-                                <goals>
-                                    <goal>schemagen</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <sources>
-                                <source>${basedir}/src/main/java/ru/ilb/jparestresource/model</source>
-                            </sources>
-                            <schemaSourceExcludeFilters>
-                                <noJaxbIndex implementation="org.codehaus.mojo.jaxb2.shared.filters.pattern.PatternFileFilter">
-                                    <patterns>
-                                        <pattern>package-info\.java</pattern>
-                                    </patterns>
-                                </noJaxbIndex>
-                            </schemaSourceExcludeFilters>
-                            <transformSchemas>
-                                <transformSchema>
-                                    <uri>urn:ru:ilb:jparestresource:model</uri>
-                                    <toPrefix>model</toPrefix>
-                                    <toFile>model.xsd</toFile>
-                                </transformSchema>
-                            </transformSchemas>
+                            <packagingExcludes>WEB-INF/lib/org.eclipse.persistence*.jar,WEB-INF/lib/javax.persistence-*.jar,WEB-INF/lib/jakarta.persistence-*.jar,WEB-INF/lib/mysql-connector-java-*.jar</packagingExcludes>
+                            <archive>
+                                <manifestEntries>
+                                    <SVN-Revision>${buildNumber}</SVN-Revision>
+                                    <Maven-Project-Version>${project.version}</Maven-Project-Version>
+                                </manifestEntries>
+                            </archive>
                         </configuration>
                     </plugin>
                     <plugin>
-                        <groupId>com.google.code.maven-replacer-plugin</groupId>
-                        <artifactId>replacer</artifactId>
-                        <version>1.5.3</version>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-dependency-plugin</artifactId>
+                        <version>2.10</version>
                         <executions>
                             <execution>
-                                <id>replace_Relation</id>
-                                <phase>process-resources</phase>
+                                <id>unpack</id>
+                                <phase>validate</phase>
                                 <goals>
-                                    <goal>replace</goal>
+                                    <goal>unpack</goal>
                                 </goals>
                                 <configuration>
-                                    <file>${basedir}/target/generated-resources/schemagen/model.xsd</file>
-                                    <replacements>
-                                        <replacement>
-                                            <token>xs:</token>
-                                            <value>xsd:</value>
-                                        </replacement>
-                                    </replacements>
+                                    <artifactItems>
+                                        <!-- packaging org.eclipse.persistence.jaxb.rs.MOXyJsonProvider required becouse of javax.ws.rs-api conflicts -->
+                                        <artifactItem>
+                                            <groupId>org.eclipse.persistence</groupId>
+                                            <artifactId>org.eclipse.persistence.moxy</artifactId>
+                                            <version>${eclipselink.version}</version>
+                                            <type>jar</type>
+                                            <overWrite>false</overWrite>
+                                            <outputDirectory>${project.build.directory}/classes</outputDirectory>
+                                            <includes>org/eclipse/persistence/jaxb/rs/*.class</includes>
+                                        </artifactItem>
+                                    </artifactItems>
                                 </configuration>
                             </execution>
                         </executions>
@@ -464,84 +302,12 @@
             </build>
         </profile>
         <profile>
-            <!-- requires: switch to system maven in netbeans, repalce common-jpa-jaxb with common-jpa, remove com.sun.xml.internal.bind from package-info.java -->
-            <id>modelgen</id>
+            <id>static-weaving-jdk8</id>
             <activation>
-                <activeByDefault>false</activeByDefault>
+                <jdk>1.8</jdk>
             </activation>
             <build>
                 <plugins>
-                    <plugin>
-                        <groupId>org.bsc.maven</groupId>
-                        <artifactId>maven-processor-plugin</artifactId>
-                        <version>3.2.0</version>
-                        <executions>
-                            <execution>
-                                <id>eclipselink-jpa-metamodel</id>
-                                <goals>
-                                    <goal>process</goal>
-                                </goals>
-                                <phase>process-resources</phase>
-                                <configuration>
-                                    <processors>
-                                        <processor>org.eclipse.persistence.internal.jpa.modelgen.CanonicalModelProcessor</processor>
-                                    </processors>
-                                    <appendSourceArtifacts>true</appendSourceArtifacts>
-                                    <processSourceArtifacts>
-                                        <processSourceArtifact>ru.ilb.common:common-jpa</processSourceArtifact>
-                                    </processSourceArtifacts>
-                                    <outputDirectory>${project.build.directory}/generated-sources/meta-model</outputDirectory>
-                                </configuration>
-                            </execution>
-                        </executions>
-                        <dependencies>
-                            <dependency>
-                                <groupId>org.eclipse.persistence</groupId>
-                                <artifactId>org.eclipse.persistence.jpa.modelgen.processor</artifactId>
-                                <version>${eclipselink.version}</version>
-                                <scope>compile</scope>
-                            </dependency>
-                        </dependencies>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <!-- Static weaving
-        1. comment <context:load-time-weaver/> [beans.xml]
-        2. uncomment <property name="eclipselink.weaving" value="static"/> [persistance.xml]
-        3. switch activeByDefault=true
-        -->
-        <profile>
-            <id>static-weaving</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>de.empulse.eclipselink</groupId>
-                        <artifactId>staticweave-maven-plugin</artifactId>
-                        <version>1.0.0</version>
-                        <executions>
-                            <execution>
-                                <phase>process-classes</phase>
-                                <goals>
-                                    <goal>weave</goal>
-                                </goals>
-                                <configuration>
-                                    <persistenceXMLLocation>META-INF/persistence.xml</persistenceXMLLocation>
-                                    <logLevel>ALL</logLevel>
-                                </configuration>
-                            </execution>
-                        </executions>
-                        <dependencies>
-                            <dependency>
-                                <groupId>org.eclipse.persistence</groupId>
-                                <artifactId>org.eclipse.persistence.jpa</artifactId>
-                                <version>${eclipselink.version}</version>
-                            </dependency>
-                        </dependencies>
-                    </plugin>
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>aspectj-maven-plugin</artifactId>
@@ -582,54 +348,48 @@
             </build>
         </profile>
         <profile>
-            <id>site</id>
+            <id>static-weaving-jdk11</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <jdk>11</jdk>
             </activation>
             <build>
                 <plugins>
                     <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>xml-maven-plugin</artifactId>
-                        <version>1.0.1</version>
+                        <!-- https://github.com/mojohaus/aspectj-maven-plugin/pull/45 -->
+                        <groupId>com.nickwongdev</groupId>
+                        <artifactId>aspectj-maven-plugin</artifactId>
+                        <version>1.12.1</version>
+                        <configuration>
+                            <complianceLevel>${maven.compiler.source}</complianceLevel>
+                            <source>${maven.compiler.source}</source>
+                            <target>${maven.compiler.target}</target>
+                            <xmlConfigured>src/main/resources/META-INF/aop.xml</xmlConfigured>
+                            <aspectLibraries>
+                                <aspectLibrary>
+                                    <groupId>org.springframework</groupId>
+                                    <artifactId>spring-aspects</artifactId>
+                                </aspectLibrary>
+                                <aspectLibrary>
+                                    <groupId>com.jcabi</groupId>
+                                    <artifactId>jcabi-aspects</artifactId>
+                                </aspectLibrary>
+                                <aspectLibrary>
+                                    <groupId>ru.ilb.aspectlock</groupId>
+                                    <artifactId>redisson-aspect-lock</artifactId>
+                                </aspectLibrary>
+                            </aspectLibraries>
+                            <verbose>true</verbose>
+                            <showWeaveInfo>true</showWeaveInfo>
+                            <privateScope>true</privateScope>
+                        </configuration>
                         <executions>
                             <execution>
-                                <phase>pre-site</phase>
                                 <goals>
-                                    <goal>transform</goal>
+                                    <goal>compile</goal>
+                                    <goal>test-compile</goal>
                                 </goals>
                             </execution>
                         </executions>
-                        <configuration>
-                            <transformationSets>
-                                <transformationSet>
-                                    <dir>${basedir}/src/main/resources/META-INF</dir>
-                                    <includes>
-                                        <include>model.jpa</include>
-                                    </includes>
-                                    <stylesheet>${basedir}/src/site/jpa_stylesheets/jpa_documentation.xsl</stylesheet>
-                                    <parameters>
-                                        <parameter>
-                                            <name>lang</name>
-                                            <value>ru</value>
-                                        </parameter>
-                                    </parameters>
-                                    <outputDir>${basedir}/src/site/xhtml</outputDir>
-                                    <fileMappers>
-                                        <fileMapper implementation="org.codehaus.plexus.components.io.filemappers.FileExtensionMapper">
-                                            <targetExtension>.xhtml</targetExtension>
-                                        </fileMapper>
-                                    </fileMappers>
-                                </transformationSet>
-                            </transformationSets>
-                        </configuration>
-                        <dependencies>
-                            <dependency>
-                                <groupId>net.sf.saxon</groupId>
-                                <artifactId>saxon</artifactId>
-                                <version>8.7</version>
-                            </dependency>
-                        </dependencies>
                     </plugin>
                 </plugins>
             </build>
