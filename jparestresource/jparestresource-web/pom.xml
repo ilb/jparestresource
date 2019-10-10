@@ -15,11 +15,11 @@
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <eclipselink.version>2.7.4</eclipselink.version>
         <javax-persistence.version>2.2.1</javax-persistence.version>
-        <javax.ws.rs-api.version>2.1</javax.ws.rs-api.version>
+        <javax.ws.rs-api.version>2.1.1</javax.ws.rs-api.version>
         <org.springframework.version>5.1.5.RELEASE</org.springframework.version>
-        <spring.boot.version>2.1.4.RELEASE</spring.boot.version>
-        <swagger.ui.version>2.2.10-1</swagger.ui.version>
-        <org.mapstruct.version>1.2.0.Final</org.mapstruct.version>
+        <spring.boot.version>2.1.9.RELEASE</spring.boot.version>
+        <swagger.ui.version>3.22.2</swagger.ui.version>
+        <org.mapstruct.version>1.3.0.Final</org.mapstruct.version>
     </properties>
     <dependencyManagement>
         <dependencies>

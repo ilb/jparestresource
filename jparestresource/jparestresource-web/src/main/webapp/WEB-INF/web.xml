@@ -44,12 +44,12 @@
     <Environment name="refreshTemplates" value="true" type="java.lang.Boolean" override="false"/>
     Also checkbox "Copy Static Resources On Save" should be enabled in project options in Netbeans ("Run" tab). -->
 
-    <env-entry>
+<!--    <env-entry>
         <description>reload xslt templates on every request</description>
         <env-entry-name>refreshTemplates</env-entry-name>
         <env-entry-type>java.lang.Boolean</env-entry-type>
         <env-entry-value>false</env-entry-value>
-    </env-entry>
+    </env-entry>-->
 
     <!-- uncomment for resource link
     <resource-env-ref>
