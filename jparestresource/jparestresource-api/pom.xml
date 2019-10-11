@@ -10,7 +10,8 @@
     <artifactId>jparestresource-api</artifactId>
     <packaging>jar</packaging>
     <properties>
-        <eclipselink.version>2.7.4</eclipselink.version>
+        <swagger-version>2.0.8</swagger-version>
+        <generated-api-version>1.0.7</generated-api-version>
     </properties>
     <name>jparestresource-api</name>
     <description>API shared module</description>
@@ -143,5 +144,110 @@
         </plugins>
     </build>
     <profiles>
+        <profile>
+            <id>swagger-maven-plugin</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <!--<openapi.generated.path>${project.build.outputDirectory}/META-INF/resources/jparestresource</openapi.generated.path>-->
+                <!--<openapi.generated.path>${project.build.outputDirectory}/jparestresource-api</openapi.generated.path>-->
+                <openapi.generated.path>${project.build.directory}/generated-sources/openapi-spec</openapi.generated.path>
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>io.swagger.core.v3</groupId>
+                        <artifactId>swagger-maven-plugin</artifactId>
+                        <version>${swagger-version}</version>
+                        <configuration>
+                            <outputFileName>openapi</outputFileName>
+                            <outputPath>${openapi.generated.path}</outputPath>
+                            <outputFormat>JSON</outputFormat>
+                            <resourcePackages>
+                                <package>ru.ilb.jparestresource.api</package>
+                            </resourcePackages>
+                            <prettyPrint>true</prettyPrint>
+                            <filterClass>ru.ilb.openapiutils.generator.OpenAPISpecFilterImpl</filterClass>
+                            <modelConverterClasses>ru.ilb.openapiutils.generator.ModelConverterImpl</modelConverterClasses>
+                            <objectMapperProcessorClass>ru.ilb.openapiutils.generator.ObjectMapperProcessorImpl</objectMapperProcessorClass>
+                            <scannerClass>ru.ilb.openapiutils.generator.OpenApiScannerImpl</scannerClass>
+                            <readerClass>ru.ilb.openapiutils.generator.OpenApiReaderImpl</readerClass>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <phase>compile</phase>
+                                <!--<phase>generate-resources</phase>-->
+                                <goals>
+                                    <goal>resolve</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <dependencies>
+                            <dependency>
+                                <groupId>ru.ilb.openapiutils</groupId>
+                                <artifactId>openapiutils</artifactId>
+                                <version>1.1</version>
+                            </dependency>
+                        </dependencies>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>openapi-generator-maven-plugin</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.openapitools</groupId>
+                        <artifactId>openapi-generator-maven-plugin</artifactId>
+                        <version>4.0.0</version>
+                        <executions>
+                            <execution>
+                                <id>generate_javascript</id>
+                                <phase>compile</phase>
+                                <goals>
+                                    <goal>generate</goal>
+                                </goals>
+                                <configuration>
+                                    <inputSpec>${openapi.generated.path}/openapi.json</inputSpec>
+                                    <output>${project.build.directory}/generated-sources/openapi-javascript</output>
+                                    <skipValidateSpec>true</skipValidateSpec>
+                                    <generatorName>javascript</generatorName>
+                                    <!-- Map File object as Buffer to use api on server side -->
+                                    <typeMappings>File=Buffer</typeMappings>
+                                    <configOptions>
+                                        <usePromises>true</usePromises>
+                                        <projectName>@ilb/${project.name}</projectName>
+                                        <projectVersion>${generated-api-version}</projectVersion>
+                                    </configOptions>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>generate_python</id>
+                                <phase>compile</phase>
+                                <goals>
+                                    <goal>generate</goal>
+                                </goals>
+                                <configuration>
+                                    <inputSpec>${openapi.generated.path}/openapi.json</inputSpec>
+                                    <output>${project.build.directory}/generated-sources/openapi-python</output>
+                                    <skipValidateSpec>true</skipValidateSpec>
+                                    <generatorName>python</generatorName>
+                                    <configOptions>
+                                        <packageName>jparestresource</packageName>
+                                        <packageVersion>${generated-api-version}</packageVersion>
+                                        <projectName>${project.name}</projectName>
+                                    </configOptions>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
     </profiles>
 </project>

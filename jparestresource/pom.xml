@@ -54,6 +54,7 @@
         <!-- https://blog.joda.org/2014/02/turning-off-doclint-in-jdk-8-javadoc.html -->
         <doclint>none</doclint>
         <apache-cxf.version>3.3.3</apache-cxf.version>
+        <eclipselink.version>2.7.4</eclipselink.version>
         <ilb-common.version>1.31-SNAPSHOT</ilb-common.version>
         <maven.test.skip>true</maven.test.skip>
     </properties>
