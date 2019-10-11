@@ -26,7 +26,7 @@ import ru.ilb.jparestresource.view.Documents;
  *
  * @author slavb
  */
-@Mapper(uses = {DocfileMapper.class}, componentModel = "spring")
+@Mapper(uses = {DocfileMapper.class})
 public abstract class DocumentMapper implements GenericMapper<ru.ilb.jparestresource.model.Document, Document> {
 
     @AfterMapping

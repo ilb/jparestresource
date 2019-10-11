@@ -228,6 +228,11 @@
                             -Amapstruct.suppressGeneratorVersionInfoComment=true
                         </compilerArg>
                     </compilerArgs>
+                    <compilerArgs>
+                        <compilerArg>-Amapstruct.suppressGeneratorTimestamp=true</compilerArg>
+                        <compilerArg>-Amapstruct.suppressGeneratorVersionInfoComment=true</compilerArg>
+                        <compilerArg>-Amapstruct.defaultComponentModel=jsr330</compilerArg>
+                    </compilerArgs>
                 </configuration>
             </plugin>
         </plugins>

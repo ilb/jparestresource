@@ -22,7 +22,7 @@ import ru.ilb.jparestresource.view.Docfile;
  *
  * @author slavb
  */
-@Mapper(componentModel = "spring")
+@Mapper
 public abstract class DocfileMapper implements GenericMapper<ru.ilb.jparestresource.model.Docfile, Docfile> {
 
 }
