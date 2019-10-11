@@ -68,7 +68,7 @@ public class Application extends JpaBaseConfiguration {
     protected Map<String, Object> getVendorProperties() {
         Map<String, Object> map = new HashMap<>();
         map.put(PersistenceUnitProperties.WEAVING, "static");
-        map.put(PersistenceUnitProperties.DDL_GENERATION, PersistenceUnitProperties.NONE);
+        map.put(PersistenceUnitProperties.DDL_GENERATION, PersistenceUnitProperties.CREATE_OR_EXTEND);
         map.put(PersistenceUnitProperties.BATCH_WRITING, "JDBC");
         map.put(PersistenceUnitProperties.BATCH_WRITING_SIZE, "1000");
         return map;
