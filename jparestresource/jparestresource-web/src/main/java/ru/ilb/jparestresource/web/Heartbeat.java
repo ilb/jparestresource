@@ -15,11 +15,9 @@
  */
 package ru.ilb.jparestresource.web;
 
-import io.swagger.annotations.Api;
 import java.sql.Connection;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import org.springframework.stereotype.Component;
@@ -30,7 +28,6 @@ import org.springframework.transaction.annotation.Transactional;
  * @author slavb
  */
 @Path("heartbeat")
-@Api("heartbeat")
 @Component
 public class Heartbeat {
 

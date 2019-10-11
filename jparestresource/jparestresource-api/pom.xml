@@ -150,9 +150,9 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <!--<openapi.generated.path>${project.build.outputDirectory}/META-INF/resources/jparestresource</openapi.generated.path>-->
+                <openapi.generated.path>${project.build.outputDirectory}/META-INF/resources/jparestresource</openapi.generated.path>
                 <!--<openapi.generated.path>${project.build.outputDirectory}/jparestresource-api</openapi.generated.path>-->
-                <openapi.generated.path>${project.build.directory}/generated-sources/openapi-spec</openapi.generated.path>
+                <!--<openapi.generated.path>${project.build.directory}/generated-sources/openapi-spec</openapi.generated.path>-->
             </properties>
             <build>
                 <plugins>

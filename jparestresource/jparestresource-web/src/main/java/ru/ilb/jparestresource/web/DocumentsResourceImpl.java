@@ -5,7 +5,6 @@
  */
 package ru.ilb.jparestresource.web;
 
-import io.swagger.annotations.Api;
 import javax.inject.Named;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Context;
@@ -15,15 +14,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.ilb.jparestresource.api.DocumentResource;
 import ru.ilb.jparestresource.api.DocumentsResource;
 import ru.ilb.jparestresource.logic.DocumentLogic;
 import ru.ilb.jparestresource.mappers.DocumentMapper;
-import ru.ilb.jparestresource.utils.JaxbHelper;
-import ru.ilb.jparestresource.repositories.DocumentRepository;
 import ru.ilb.jparestresource.providers.AuthorizationHandler;
+import ru.ilb.jparestresource.repositories.DocumentRepository;
+import ru.ilb.jparestresource.utils.JaxbHelper;
 import ru.ilb.jparestresource.view.Document;
 import ru.ilb.jparestresource.view.Documents;
 
