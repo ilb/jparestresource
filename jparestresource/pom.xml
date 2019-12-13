@@ -55,7 +55,7 @@
         <doclint>none</doclint>
         <apache-cxf.version>3.3.3</apache-cxf.version>
         <eclipselink.version>2.7.4</eclipselink.version>
-        <ilb-common.version>1.31-SNAPSHOT</ilb-common.version>
+        <ilb-common.version>1.32</ilb-common.version>
         <maven.test.skip>true</maven.test.skip>
     </properties>
     <build>
