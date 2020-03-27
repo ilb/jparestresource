@@ -7,7 +7,7 @@ pipeline {
             }
         }
         stage("Release") {
-            when { tag "v*" }
+            when { expression { sh([returnStdout: true, script: 'echo $TAG_NAME | tr -d \'\n\'']) } }
             steps {
                 sh "mvn -f jparestresource/pom.xml -B release:prepare"
                 sh "mvn -f jparestresource/pom.xml -B release:perform"
