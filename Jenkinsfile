@@ -7,7 +7,11 @@ pipeline {
             }
         }
         stage("Release") {
-            when { expression { sh([returnStdout: true, script: 'echo $TAG_NAME | tr -d \'\n\'']) } }
+            when { 
+                expression {
+                    sh(returnStdout: true, script: "git tag --contains | head -1").trim()
+                }
+            }
             steps {
                 sh "mvn -f jparestresource/pom.xml -B release:prepare"
                 sh "mvn -f jparestresource/pom.xml -B release:perform"
