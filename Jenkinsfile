@@ -7,9 +7,7 @@ pipeline {
             }
         }
         stage("Release") {
-            when {
-                when { tag "v*" }
-            }
+            when { tag "v*" }
             steps {
                 sh "mvn -B release:prepare"
                 sh "mvn -B release:perform"
