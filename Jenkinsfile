@@ -3,14 +3,14 @@ pipeline {
     stages {
         stage ('Build') {
             steps {
-                sh 'mvn install'
+                sh 'mvn -f jparestresource/pom.xml install'
             }
         }
         stage("Release") {
             when { tag "v*" }
             steps {
-                sh "mvn -B release:prepare"
-                sh "mvn -B release:perform"
+                sh "mvn -f jparestresource/pom.xml -B release:prepare"
+                sh "mvn -f jparestresource/pom.xml -B release:perform"
             }
         }
     }
