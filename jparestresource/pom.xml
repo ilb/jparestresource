@@ -20,8 +20,8 @@
         </developer>
     </developers>
     <scm>
-        <connection>scm:git:https://github.com/ilb/jparestresource.git</connection>
-        <url>https://github.com/ilb/jparestresource</url>
+        <connection>scm:git:https://git.ilb.ru/ilb.ru/jparestresource.git</connection>
+        <url>https://git.ilb.ru/ilb.ru/jparestresource</url>
         <tag>HEAD</tag>
     </scm>
     <!-- use bb svn -->
