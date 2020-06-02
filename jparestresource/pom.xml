@@ -5,6 +5,9 @@
     <artifactId>jparestresource</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
+    <name>jparestresource</name>
+    <description>jparestresource example rest service with JPA and REST</description>
+    <url>https://git.ilb.ru/ilb.ru/jparestresource</url>
     <licenses>
         <license>
             <name>Apache 2.0</name>
@@ -19,30 +22,10 @@
             <email>github@bystrobank.ru</email>
         </developer>
     </developers>
-    <scm>
-        <connection>scm:git:https://github.com/ilb/jparestresource.git</connection>
-        <url>https://github.com/ilb/jparestresource</url>
-        <tag>HEAD</tag>
+        <scm>
+        <connection>scm:git:https://git.ilb.ru/ilb.ru/jparestresource.git</connection>
+        <url>https://git.ilb.ru/ilb.ru/jparestresource</url>
     </scm>
-    <!-- use bb svn -->
-    <!--
-    <scm>
-        <connection>scm:svn:https://svn.ilb.ru/repos/jparestresource/trunk</connection>
-        <url>https://svn.ilb.ru/repos/jparestresource/trunk</url>
-    </scm>
-    -->
-    <distributionManagement>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <name>Sonatype Nexus snapshot repository</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
-        <repository>
-            <id>ossrh</id>
-            <name>Sonatype Nexus release repository</name>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-        </repository>
-    </distributionManagement>
     <modules>
         <module>jparestresource-web</module>
         <module>jparestresource-api</module>
@@ -53,10 +36,10 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <!-- https://blog.joda.org/2014/02/turning-off-doclint-in-jdk-8-javadoc.html -->
         <doclint>none</doclint>
-        <apache-cxf.version>3.3.3</apache-cxf.version>
-        <eclipselink.version>2.7.4</eclipselink.version>
-        <ilb-common.version>1.32</ilb-common.version>
-        <maven.test.skip>true</maven.test.skip>
+        <apache-cxf.version>3.3.6</apache-cxf.version>
+        <eclipselink.version>2.7.6</eclipselink.version>
+        <ilb-common.version>1.33</ilb-common.version>
+        <!--<maven.test.skip>true</maven.test.skip>-->
     </properties>
     <build>
         <pluginManagement>
@@ -98,4 +81,27 @@
             </plugin>
         </plugins>
     </build>
+     <profiles>
+        <profile>
+            <id>release-profile</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.6</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
