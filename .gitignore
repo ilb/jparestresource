@@ -1,4 +1,5 @@
-/jparestresource/jparestresource-api/target/
-/jparestresource/jparestresource-web/target/
-/jparestresource/jparestresource-model/target/
-/jparestresource/target/
+/jparestresource-api/target/
+/jparestresource-web/target/
+/jparestresource-model/target/
+/target/
+/target/
