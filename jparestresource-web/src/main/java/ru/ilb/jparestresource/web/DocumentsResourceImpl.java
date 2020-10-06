@@ -18,28 +18,30 @@ import ru.ilb.jparestresource.api.DocumentsResource;
 import ru.ilb.jparestresource.logic.DocumentFactory;
 import ru.ilb.jparestresource.mappers.DocumentMapper;
 import ru.ilb.jparestresource.repositories.DocumentRepository;
+import ru.ilb.jparestresource.usecases.CreateBatch;
+import ru.ilb.jparestresource.usecases.ListDocuments;
 import ru.ilb.jparestresource.view.Document;
 import ru.ilb.jparestresource.view.Documents;
 
 @Named
 public class DocumentsResourceImpl implements DocumentsResource, ContextResource {
 
-    private final DocumentMapper documentMapper;
+    private static final Logger LOG = LoggerFactory.getLogger(DocumentsResourceImpl.class);
 
-    private final DocumentFactory documentFactory;
-    private final DocumentRepository documentRepository;
+    @Inject
+    private DocumentMapper documentMapper;
+    @Inject
+    private DocumentFactory documentFactory;
+
+    @Inject
+    private CreateBatch createBatch;
+
+    @Inject
+    private ListDocuments listDocuments;
 
     private UriInfo uriInfo;
 
     private MessageContext messageContext;
-
-    @Inject
-    public DocumentsResourceImpl(DocumentMapper documentMapper, DocumentFactory documentFactory, DocumentRepository documentRepository) {
-        this.documentMapper = documentMapper;
-        this.documentFactory = documentFactory;
-        this.documentRepository = documentRepository;
-    }
-
 
     @Context
     @Override
@@ -53,13 +55,10 @@ public class DocumentsResourceImpl implements DocumentsResource, ContextResource
         this.messageContext = messageContext;
     }
 
-
-    private static final Logger LOG = LoggerFactory.getLogger(DocumentsResourceImpl.class);
-
     @Override
     @Transactional
     public Documents list(Integer limit, String order) {
-        return documentMapper.createWrapperFromEntities(documentRepository.findAll());
+        return documentMapper.createWrapperFromEntities(listDocuments.execute(limit, order));
     }
 
     @Override
@@ -71,7 +70,7 @@ public class DocumentsResourceImpl implements DocumentsResource, ContextResource
     @Override
     @Transactional
     public void createBatch(Documents documents) {
-        documentRepository.saveAll(documentMapper.createFromDtos(documents.getDocuments()));
+        createBatch.execute(documentMapper.createFromDtos(documents.getDocuments()));
     }
 
     @Override
