@@ -41,3 +41,4 @@ Install Jeddict from  https://jeddict.github.io
 2. enabled static weaving maven plugin https://wiki.eclipse.org/EclipseLink/UserGuide/JPA/Advanced_JPA_Development/Performance/Weaving/Static_Weaving
 3. update common to 1.34 (update common-springboot MOXyJsonProvider registration)
 4. dependency management from Spring Boot moved to parent pom in order to make  modules dependecies registration simplier
+5. separate test package dependencies and spring boot tests example

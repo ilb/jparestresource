@@ -12,7 +12,6 @@ import javax.ws.rs.core.UriInfo;
 import org.apache.cxf.jaxrs.ext.MessageContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import ru.ilb.jparestresource.api.DocumentResource;
 import ru.ilb.jparestresource.api.DocumentsResource;
@@ -22,7 +21,6 @@ import ru.ilb.jparestresource.repositories.DocumentRepository;
 import ru.ilb.jparestresource.view.Document;
 import ru.ilb.jparestresource.view.Documents;
 
-//@Path("documents")
 @Named
 public class DocumentsResourceImpl implements DocumentsResource, ContextResource {
 
