@@ -5,48 +5,43 @@
  */
 package ru.ilb.jparestresource.web;
 
+import javax.inject.Inject;
 import javax.inject.Named;
-import javax.ws.rs.Path;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import org.apache.cxf.jaxrs.ext.MessageContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.transaction.annotation.Transactional;
 import ru.ilb.jparestresource.api.DocumentResource;
 import ru.ilb.jparestresource.api.DocumentsResource;
-import ru.ilb.jparestresource.logic.DocumentLogic;
+import ru.ilb.jparestresource.logic.DocumentFactory;
 import ru.ilb.jparestresource.mappers.DocumentMapper;
-import ru.ilb.jparestresource.providers.AuthorizationHandler;
 import ru.ilb.jparestresource.repositories.DocumentRepository;
-import ru.ilb.jparestresource.utils.JaxbHelper;
 import ru.ilb.jparestresource.view.Document;
 import ru.ilb.jparestresource.view.Documents;
 
-@Path("documents")
+//@Path("documents")
 @Named
 public class DocumentsResourceImpl implements DocumentsResource, ContextResource {
 
-    @Autowired
-    AuthorizationHandler authorizationHandler;
+    private final DocumentMapper documentMapper;
 
-    @Autowired
-    JaxbHelper jaxbHelper;
-
-    @Autowired
-    private DocumentMapper documentMapper;
-
-    @Autowired
-    private DocumentLogic documentLogic;
+    private final DocumentFactory documentFactory;
+    private final DocumentRepository documentRepository;
 
     private UriInfo uriInfo;
 
-    @Autowired
-    private ApplicationContext applicationContext;
-
     private MessageContext messageContext;
+
+    @Inject
+    public DocumentsResourceImpl(DocumentMapper documentMapper, DocumentFactory documentFactory, DocumentRepository documentRepository) {
+        this.documentMapper = documentMapper;
+        this.documentFactory = documentFactory;
+        this.documentRepository = documentRepository;
+    }
+
 
     @Context
     @Override
@@ -60,8 +55,6 @@ public class DocumentsResourceImpl implements DocumentsResource, ContextResource
         this.messageContext = messageContext;
     }
 
-    @Autowired
-    DocumentRepository documentRepository;
 
     private static final Logger LOG = LoggerFactory.getLogger(DocumentsResourceImpl.class);
 
@@ -85,7 +78,7 @@ public class DocumentsResourceImpl implements DocumentsResource, ContextResource
 
     @Override
     public DocumentResource getDocumentResource(long documentId) {
-        return new DocumentResourceImpl(documentId, applicationContext, messageContext);
+        return new DocumentResourceImpl(documentMapper, documentFactory, documentId);
     }
 
 }

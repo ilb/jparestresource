@@ -16,8 +16,8 @@
 package ru.ilb.jparestresource.logic;
 
 import com.jcabi.aspects.Loggable;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import javax.inject.Inject;
+import javax.inject.Named;
 import ru.ilb.jparestresource.model.Document;
 import ru.ilb.jparestresource.repositories.DocumentRepository;
 
@@ -25,11 +25,16 @@ import ru.ilb.jparestresource.repositories.DocumentRepository;
  *
  * @author slavb
  */
-@Component
-public class DocumentLogic {
+@Named
+public class DocumentFactory {
 
-    @Autowired
-    DocumentRepository documentRepository;
+    private final DocumentRepository documentRepository;
+
+    @Inject
+    public DocumentFactory(DocumentRepository documentRepository) {
+        this.documentRepository = documentRepository;
+    }
+
 
     @Loggable(Loggable.INFO)
     public Document getDocument(long documentId) {

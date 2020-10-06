@@ -15,19 +15,19 @@
  */
 package ru.ilb.jparestresource.utils;
 
+import javax.inject.Named;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.ext.ContextResolver;
 import javax.xml.bind.JAXBContext;
 import javax.xml.transform.Source;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import ru.ilb.common.jaxb.util.JaxbUtil;
 
 /**
  *
  * @author slavb
  */
-@Component
+@Named
 public class JaxbHelper {
 
     @Autowired
