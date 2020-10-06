@@ -1,9 +1,10 @@
 # jparestresource
+
 JAX-RS + JPA application
 
 ##Example project creation based on this archetype in command line
 
-mvn -DarchetypeGroupId=ru.ilb.jparestresource -DarchetypeArtifactId=jparestresource-archetype -DarchetypeVersion=1.0-SNAPSHOT -DgroupId=ru.ilb.sampleapplication -DartifactId=sampleapplication -Dversion=1.0-SNAPSHOT -Dpackage=ru.ilb.sampleapplication -Darchetype.interactive=false --batch-mode --update-snapshots archetype:generate
+mvn -DarchetypeGroupId=ru.ilb.jparestresource -DarchetypeArtifactId=jparestresource-archetype -DarchetypeVersion=1.1-SNAPSHOT -DgroupId=ru.ilb.sampleapplication -DartifactId=sampleapplication -Dversion=1.0-SNAPSHOT -Dpackage=ru.ilb.sampleapplication -Darchetype.interactive=false --batch-mode --update-snapshots archetype:generate
 
 
 ##Example project creation based on this archetype in Netbeans
@@ -24,6 +25,7 @@ Place in ${catalina.base}/lib following jars:
 
 
 ##Note about Tomcat before 8.0.33
+
 TomcatInstrumentableClassLoader is not intended to work on Tomcat 8.0.33+, but required in older versions.
 In case of exception javax.persistence.TransactionRequiredException: No EntityManager with actual transaction available for current thread
 uncomment line with &lt;Loader loaderClass="org.springframework.instrument.classloading.tomcat.TomcatInstrumentableClassLoader"/> in context.xml
@@ -31,6 +33,7 @@ and place spring-instrument-tomcat-4.3.2.RELEASE.jar in ${catalina.base}/lib
 
 
 ## Jeddict plugin for Netbeans
+
 Install Jeddict from  https://jeddict.github.io
 
 # Changelog
