@@ -29,6 +29,7 @@
     <modules>
         <module>jparestresource-web</module>
         <module>jparestresource-api</module>
+        <module>jparestresource-model</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
