@@ -34,10 +34,15 @@
             <scope>compile</scope>
         </dependency>
         -->
+        <!--        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-wadl2java-plugin</artifactId>
+            <version>${apache-cxf.version}</version>
+        </dependency>-->
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
-            <version>7.0</version>
+            <version>8.0</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
@@ -48,6 +53,7 @@
                 <groupId>org.apache.cxf</groupId>
                 <artifactId>cxf-wadl2java-plugin</artifactId>
                 <version>${apache-cxf.version}</version>
+                <!--<version>3.4.1-SNAPSHOT</version>-->
                 <executions>
                     <execution>
                         <id>generate-sources</id>
@@ -67,6 +73,9 @@
                                         <extraarg>-inheritResourceParams</extraarg>
                                         <extraarg>-javaDocs</extraarg>
                                         <extraarg>-xjc-Xjavadoc</extraarg>
+                                        <extraarg>-generateResponseIfHeadersSet</extraarg>
+                                        <extraarg>-generateResponseForMethods createBatchAsyncSubmit,createBatchAsyncWait</extraarg>
+                                        <!--<extraarg>-noVoidForEmptyResponses</extraarg>-->
                                         <!-- repMap examples
                                         <extraarg>-repMap</extraarg>
                                         <extraarg>application/*=java.io.InputStream</extraarg>
@@ -139,6 +148,11 @@
                         <artifactId>org.eclipse.persistence.moxy</artifactId>
                         <version>${eclipselink.version}</version>
                     </dependency>
+<!--                    <dependency>
+                        <groupId>org.apache.cxf</groupId>
+                        <artifactId>cxf-tools-wadlto-jaxrs</artifactId>
+                        <version>3.4.1-SNAPSHOT</version>
+                    </dependency>-->
                 </dependencies>
             </plugin>
         </plugins>

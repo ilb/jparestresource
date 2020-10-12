@@ -5,14 +5,17 @@
  */
 package ru.ilb.jparestresource.web;
 
+import com.github.sadstool.redissonaspectlock.annotation.Lockable;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 import org.apache.cxf.jaxrs.ext.MessageContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.transaction.annotation.Transactional;
+import ru.ilb.common.jaxrs.async.AsyncTaskManager;
 import ru.ilb.jparestresource.api.DocumentResource;
 import ru.ilb.jparestresource.api.DocumentsResource;
 import ru.ilb.jparestresource.logic.DocumentFactory;
@@ -32,6 +35,9 @@ public class DocumentsResourceImpl implements DocumentsResource, ContextResource
     private DocumentMapper documentMapper;
     @Inject
     private DocumentFactory documentFactory;
+
+    @Inject
+    private AsyncTaskManager asyncTaskManager;
 
     @Inject
     private CreateBatch createBatch;
@@ -68,6 +74,7 @@ public class DocumentsResourceImpl implements DocumentsResource, ContextResource
     }
 
     @Override
+    @Lockable
     @Transactional
     public void createBatch(Documents documents) {
         createBatch.execute(documentMapper.createFromDtos(documents.getDocuments()));
@@ -76,6 +83,19 @@ public class DocumentsResourceImpl implements DocumentsResource, ContextResource
     @Override
     public DocumentResource getDocumentResource(long documentId) {
         return new DocumentResourceImpl(documentMapper, documentFactory, documentId);
+    }
+
+    @Override
+    public Response createBatchAsyncSubmit(Documents documents) {
+        return asyncTaskManager.submit(() -> {
+            createBatch(documents);
+            return null;
+        }, uriInfo);
+    }
+
+    @Override
+    public Response createBatchAsyncWait(String taskId, String i) {
+        return asyncTaskManager.wait(taskId, uriInfo, i);
     }
 
 }

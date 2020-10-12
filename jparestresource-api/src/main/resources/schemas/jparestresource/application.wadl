@@ -100,6 +100,47 @@
                     <response status="204"></response>
                 </method>
             </resource>
+            <resource path="batchAsync">
+                <method name="POST" id="createBatchAsyncSubmit">
+                    <doc>create batch document instances</doc>
+                    <request>
+                        <representation mediaType="application/xml" element="view:documents">
+                            <doc>documents data</doc>
+                        </representation>
+                        <representation mediaType="application/json">
+                            <doc>documents data</doc>
+                        </representation>
+                    </request>
+                    <response status="303">
+                        <doc>redirect-after-submit to wait result</doc>
+                    </response>
+                </method>
+                <method name="GET" id="createBatchAsyncWait">
+                    <doc>wait for result</doc>
+                    <request>
+                        <param name="taskId" style="query" type="xsd:string">
+                            <doc>task id</doc>
+                        </param>
+                        <param name="i" style="query" type="xsd:string">
+                            <doc>iteration unique number</doc>
+                        </param>
+                    </request>
+                    <response status="202">
+                        <doc>task not finished</doc>
+                        <representation mediaType="*/*">
+<!--                            <param name="refresh" style="header" type="xsd:string">
+                                <doc>link for next iteration, prepended with sleep time (sleep;uri)</doc>
+                            </param>-->
+                        </representation>
+                    </response>
+                    <response status="204">
+                        <doc>task finished, all ok</doc>
+                    </response>
+                    <response status="410">
+                        <doc>task not exists anymore</doc>
+                    </response>
+                </method>
+            </resource>
             <resource path="{documentId}" id="documentResource" type="#documentResource">
                 <param name="documentId" style="template" type="xsd:long">
                     <doc>document id</doc>
