@@ -15,12 +15,9 @@
  */
 package ru.ilb.jparestresource.web;
 
-import org.apache.cxf.jaxrs.ext.MessageContext;
 import org.apache.cxf.jaxrs.ext.xml.XSLTTransform;
 import org.springframework.beans.factory.annotation.Autowire;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
-import org.springframework.context.ApplicationContext;
 import org.springframework.transaction.annotation.Transactional;
 import ru.ilb.jparestresource.api.DocumentResource;
 import ru.ilb.jparestresource.logic.DocumentFactory;

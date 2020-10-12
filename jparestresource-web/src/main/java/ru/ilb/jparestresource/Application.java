@@ -18,10 +18,8 @@ package ru.ilb.jparestresource;
 import java.util.HashMap;
 import java.util.Map;
 import javax.sql.DataSource;
-import org.apache.cxf.Bus;
 import org.eclipse.persistence.config.PersistenceUnitProperties;
 import org.springframework.beans.factory.ObjectProvider;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration;
@@ -47,9 +45,9 @@ import org.springframework.transaction.jta.JtaTransactionManager;
 @EnableTransactionManagement(mode = AdviceMode.ASPECTJ)
 @EnableCaching(mode = AdviceMode.ASPECTJ)
 public class Application extends JpaBaseConfiguration {
-
-    @Autowired
-    private Bus bus;
+//
+//    @Autowired
+//    private Bus bus;
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);

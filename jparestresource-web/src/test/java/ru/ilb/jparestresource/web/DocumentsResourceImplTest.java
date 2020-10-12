@@ -16,14 +16,12 @@
 package ru.ilb.jparestresource.web;
 
 import javax.inject.Inject;
-import javax.ws.rs.core.UriInfo;
-import org.apache.cxf.jaxrs.ext.MessageContext;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.AfterEach;
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 import ru.ilb.jparestresource.api.DocumentsResource;

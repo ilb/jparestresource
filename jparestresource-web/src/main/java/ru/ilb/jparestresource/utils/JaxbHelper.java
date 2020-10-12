@@ -16,7 +16,6 @@
 package ru.ilb.jparestresource.utils;
 
 import javax.inject.Named;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.ext.ContextResolver;
 import javax.xml.bind.JAXBContext;
 import javax.xml.transform.Source;

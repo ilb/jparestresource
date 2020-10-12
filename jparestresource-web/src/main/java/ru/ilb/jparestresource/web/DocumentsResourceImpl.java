@@ -11,25 +11,21 @@ import javax.inject.Named;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
-import org.apache.cxf.jaxrs.ext.MessageContext;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.transaction.annotation.Transactional;
 import ru.ilb.common.jaxrs.async.AsyncTaskManager;
 import ru.ilb.jparestresource.api.DocumentResource;
 import ru.ilb.jparestresource.api.DocumentsResource;
 import ru.ilb.jparestresource.logic.DocumentFactory;
 import ru.ilb.jparestresource.mappers.DocumentMapper;
-import ru.ilb.jparestresource.repositories.DocumentRepository;
 import ru.ilb.jparestresource.usecases.CreateBatch;
 import ru.ilb.jparestresource.usecases.ListDocuments;
 import ru.ilb.jparestresource.view.Document;
 import ru.ilb.jparestresource.view.Documents;
 
 @Named
-public class DocumentsResourceImpl implements DocumentsResource, ContextResource {
+public class DocumentsResourceImpl implements DocumentsResource { //, ContextResource
 
-    private static final Logger LOG = LoggerFactory.getLogger(DocumentsResourceImpl.class);
+//    private static final Logger LOG = LoggerFactory.getLogger(DocumentsResourceImpl.class);
 
     @Inject
     private DocumentMapper documentMapper;
@@ -47,19 +43,17 @@ public class DocumentsResourceImpl implements DocumentsResource, ContextResource
 
     private UriInfo uriInfo;
 
-    private MessageContext messageContext;
 
     @Context
-    @Override
     public void setUriInfo(UriInfo uriInfo) {
         this.uriInfo = uriInfo;
     }
-
-    @Override
-    @Context
-    public void setMessageContext(MessageContext messageContext) {
-        this.messageContext = messageContext;
-    }
+//  private MessageContext messageContext;
+//
+//    @Context
+//    public void setMessageContext(MessageContext messageContext) {
+//        this.messageContext = messageContext;
+//    }
 
     @Override
     @Transactional

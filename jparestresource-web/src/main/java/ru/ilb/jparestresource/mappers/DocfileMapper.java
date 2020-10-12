@@ -25,4 +25,7 @@ import ru.ilb.jparestresource.view.Docfile;
 @Mapper
 public abstract class DocfileMapper implements GenericMapper<ru.ilb.jparestresource.model.Docfile, Docfile> {
 
+    protected DocfileMapper() {
+    }
+
 }
