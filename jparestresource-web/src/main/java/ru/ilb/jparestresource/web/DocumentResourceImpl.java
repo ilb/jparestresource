@@ -41,19 +41,20 @@ public class DocumentResourceImpl implements DocumentResource {
     }
 
     @Override
-    @XSLTTransform(value = "stylesheets/jparestresource/document.xsl", mediaTypes = "application/xhtml+xml", type = XSLTTransform.TransformType.SERVER)
+    @XSLTTransform(value = "stylesheets/jparestresource/document.xsl", mediaTypes = "application/xhtml+xml",
+            type = XSLTTransform.TransformType.SERVER)
     public Document find() {
         return documentMapper.createFromEntity(documentFactory.getDocument(documentId));
     }
 
     @Override
     public void edit(Document document) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
     public void remove() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
 }

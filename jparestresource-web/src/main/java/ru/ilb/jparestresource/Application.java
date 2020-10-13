@@ -39,22 +39,26 @@ import org.springframework.transaction.jta.JtaTransactionManager;
  */
 @SpringBootApplication
 @ComponentScan
-//@EntityScan(value = {"ru.ilb.jparestresource.model", "ru.ilb.jparestresource.converters"}, basePackageClasses = {UUIDConverterBytes.class})
-//@EnableJpaRepositories(basePackages = "ru.ilb.jparestresource.repositories", repositoryBaseClass = CacheableJpaRepositoryImpl.class)
+//@EntityScan(value = {"ru.ilb.jparestresource.model", "ru.ilb.jparestresource.converters"},
+//    basePackageClasses = {UUIDConverterBytes.class})
+//@EnableJpaRepositories(basePackages = "ru.ilb.jparestresource.repositories",
+//    repositoryBaseClass = CacheableJpaRepositoryImpl.class)
 //@PropertySource("application.properties")
 @EnableTransactionManagement(mode = AdviceMode.ASPECTJ)
 @EnableCaching(mode = AdviceMode.ASPECTJ)
 public class Application extends JpaBaseConfiguration {
+
+    public Application(DataSource dataSource, JpaProperties properties,
+            ObjectProvider<JtaTransactionManager> jtaTransactionManager,
+            ObjectProvider<TransactionManagerCustomizers> transactionManagerCustomizers) {
+        super(dataSource, properties, jtaTransactionManager, transactionManagerCustomizers);
+    }
 //
 //    @Autowired
 //    private Bus bus;
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
-    }
-
-    public Application(DataSource dataSource, JpaProperties properties, ObjectProvider<JtaTransactionManager> jtaTransactionManager, ObjectProvider<TransactionManagerCustomizers> transactionManagerCustomizers) {
-        super(dataSource, properties, jtaTransactionManager, transactionManagerCustomizers);
     }
 
     @Override

@@ -18,7 +18,7 @@ package ru.ilb.jparestresource.web;
 import javax.inject.Inject;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -33,7 +33,8 @@ import ru.ilb.jparestresource.view.Documents;
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class DocumentsResourceImplTest {
- @LocalServerPort
+
+    @LocalServerPort
     private Integer randomPort;
 
     @Inject
@@ -58,7 +59,6 @@ public class DocumentsResourceImplTest {
     public void tearDown() {
     }
 
-
     /**
      * Test of list method, of class DocumentsResourceImpl.
      */
@@ -71,6 +71,5 @@ public class DocumentsResourceImplTest {
         Documents result = instance.list(limit, order);
         assertEquals(9, result.getDocuments().size());
     }
-
 
 }

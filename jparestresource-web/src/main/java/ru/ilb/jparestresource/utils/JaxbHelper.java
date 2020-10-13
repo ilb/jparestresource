@@ -36,7 +36,8 @@ public class JaxbHelper {
      * unmarshalls object instance
      *
      * @param <T>
-     * @param source example from String: new StreamSource(new java.io.StringReader(string)), from InputStream: new StreamSource(is)
+     * @param source example from String: new StreamSource(new java.io.StringReader(string)),
+     *          from InputStream: new StreamSource(is)
      * @param type
      * @param mediaType
      * @return T

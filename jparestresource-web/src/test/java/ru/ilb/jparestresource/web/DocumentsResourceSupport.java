@@ -34,7 +34,7 @@ public class DocumentsResourceSupport {
 
 
     //@Inject
-    MOXyJsonProvider jsonProvider = new MOXyJsonProvider();
+    private MOXyJsonProvider jsonProvider = new MOXyJsonProvider();
 
 //    @Inject
 //    private JsonMapObjectProvider jsonMapObjectProvider;
@@ -60,7 +60,7 @@ public class DocumentsResourceSupport {
      * @param resource
      * @param receiveTimeout
      */
-    private void configureTimeout(Object resource, int receiveTimeout) {
+    private static void configureTimeout(Object resource, int receiveTimeout) {
         WebClient webClient = WebClient.fromClient(WebClient.client(resource));
 
         HTTPConduit conduit = WebClient.getConfig(webClient).getHttpConduit();

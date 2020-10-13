@@ -36,7 +36,10 @@ import org.springframework.util.ClassUtils;
  *
  * @author slavb
  */
-public class SchemaGenerator {
+public final class SchemaGenerator {
+
+    private SchemaGenerator() {
+    }
 
     /**
      * @param args the command line arguments
@@ -45,7 +48,8 @@ public class SchemaGenerator {
         Map<String, Object> contextProperties = new HashMap();
         contextProperties.put("eclipselink.beanvalidation.facets", true);
         CachingMetadataReaderFactory factory = new CachingMetadataReaderFactory();
-        ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver(SchemaGenerator.class.getClassLoader());
+        ResourcePatternResolver resolver
+                = new PathMatchingResourcePatternResolver(SchemaGenerator.class.getClassLoader());
         List<Class> classes = new ArrayList<>();
         for (Resource resource : resolver.getResources("classpath:/ru/ilb/jparestresource/model/*.class")) {
             ClassMetadata metadata = factory.getMetadataReader(resource).getClassMetadata();
