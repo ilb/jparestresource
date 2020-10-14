@@ -1,5 +1,6 @@
-@javax.xml.bind.annotation.XmlSchema(namespace = "urn:ru:ilb:jparestresource:model", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED) //Requires common-jpa-jaxb dependency
-//@XmlAccessorFactory(LazyAccessorFactoryImpl.class)
+@javax.xml.bind.annotation.XmlSchema(namespace = "urn:ru:ilb:jparestresource:model",
+        elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
+//@XmlAccessorFactory(LazyAccessorFactoryImpl.class) //Requires common-jpa-jaxb dependency
 
 @XmlJavaTypeAdapters({
     @XmlJavaTypeAdapter(type = LocalDate.class, value = LocalDateXmlAdapter.class),
@@ -16,7 +17,6 @@ package ru.ilb.jparestresource.model;
 import com.migesok.jaxb.adapter.javatime.LocalDateTimeXmlAdapter;
 import com.migesok.jaxb.adapter.javatime.LocalDateXmlAdapter;
 import com.migesok.jaxb.adapter.javatime.LocalTimeXmlAdapter;
-//import com.sun.xml.internal.bind.XmlAccessorFactory;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
