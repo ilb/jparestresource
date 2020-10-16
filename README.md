@@ -2,12 +2,12 @@
 
 JAX-RS + JPA application
 
-##Example project creation based on this archetype in command line
+## Example project creation based on this archetype in command line
 
 mvn -DarchetypeGroupId=ru.ilb.jparestresource -DarchetypeArtifactId=jparestresource-archetype -DarchetypeVersion=1.1-SNAPSHOT -DgroupId=ru.ilb.sampleapplication -DartifactId=sampleapplication -Dversion=1.0-SNAPSHOT -Dpackage=ru.ilb.sampleapplication -Darchetype.interactive=false --batch-mode --update-snapshots archetype:generate
 
 
-##Example project creation based on this archetype in Netbeans
+## Example project creation based on this archetype in Netbeans
 
 1. File -> New Project, choose Maven -> Project from archetype, click Next
 2. Start typing jparesresource in Search field and choose jparestresource-archetype, click Next
@@ -24,7 +24,7 @@ Place in ${catalina.base}/lib following jars:
 * mysql-connector-java-5.1.31.jar
 
 
-##Note about Tomcat before 8.0.33
+## Note about Tomcat before 8.0.33
 
 TomcatInstrumentableClassLoader is not intended to work on Tomcat 8.0.33+, but required in older versions.
 In case of exception javax.persistence.TransactionRequiredException: No EntityManager with actual transaction available for current thread
@@ -46,4 +46,4 @@ Install Jeddict from  https://jeddict.github.io
 4. dependency management from Spring Boot moved to parent pom in order to make  modules dependecies registration simplier
 5. separate test package dependencies and spring boot tests example
 6. AsyncTaskManager example
-7. Setup PMD using ru.ilb.parent:parent
+7. Setup PMD and checkstyle using ru.ilb.parent:parent
