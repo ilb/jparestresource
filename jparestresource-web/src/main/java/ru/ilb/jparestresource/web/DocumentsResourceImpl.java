@@ -18,6 +18,7 @@ import ru.ilb.jparestresource.api.DocumentsResource;
 import ru.ilb.jparestresource.logic.DocumentFactory;
 import ru.ilb.jparestresource.mappers.DocumentMapper;
 import ru.ilb.jparestresource.usecases.CreateBatch;
+import ru.ilb.jparestresource.usecases.CreateDocument;
 import ru.ilb.jparestresource.usecases.ListDocuments;
 import ru.ilb.jparestresource.view.Document;
 import ru.ilb.jparestresource.view.Documents;
@@ -26,7 +27,6 @@ import ru.ilb.jparestresource.view.Documents;
 public class DocumentsResourceImpl implements DocumentsResource { //, ContextResource
 
 //    private static final Logger LOG = LoggerFactory.getLogger(DocumentsResourceImpl.class);
-
     @Inject
     private DocumentMapper documentMapper;
     @Inject
@@ -39,10 +39,12 @@ public class DocumentsResourceImpl implements DocumentsResource { //, ContextRes
     private CreateBatch createBatch;
 
     @Inject
+    private CreateDocument createDocument;
+
+    @Inject
     private ListDocuments listDocuments;
 
     private UriInfo uriInfo;
-
 
     @Context
     public void setUriInfo(UriInfo uriInfo) {
@@ -64,7 +66,7 @@ public class DocumentsResourceImpl implements DocumentsResource { //, ContextRes
     @Override
     @Transactional
     public long create(Document document) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return createDocument.execute(documentMapper.createFromDto(document)).getId();
     }
 
     @Override
