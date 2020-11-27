@@ -35,7 +35,6 @@ public class Document implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false)
     private Long id;
-
     /**
      * Document name
      */
@@ -43,23 +42,19 @@ public class Document implements Serializable {
     @Size(min = 1, max = 255, message = "must be beweeen 1 and 255 chars")
     @XmlElement
     private String displayName;
-
     /**
      * Document description
      */
     @Basic
     private String description;
-
     /**
      * Document date
      */
     @Basic
     private LocalDate docDate;
-
     @OneToOne(fetch = FetchType.LAZY, orphanRemoval = true, cascade = CascadeType.ALL)
     @CascadeOnDelete
     private Document document;
-
     @OneToMany(mappedBy = "document", orphanRemoval = true, cascade = CascadeType.ALL)
     @CascadeOnDelete
     @XmlTransient
@@ -83,6 +78,7 @@ public class Document implements Serializable {
      *
      * @return {@link #displayName}
      */
+
     public String getDisplayName() {
         return displayName;
     }
@@ -96,6 +92,12 @@ public class Document implements Serializable {
         this.displayName = displayName;
     }
 
+    /**
+     * Set document name
+     *
+     * @param displayName {@link #displayName}
+     * @return {@link #Document}
+     */
     public Document withDisplayName(String displayName) {
         this.displayName = displayName;
         return this;
@@ -106,6 +108,7 @@ public class Document implements Serializable {
      *
      * @return {@link #description}
      */
+
     public String getDescription() {
         return description;
     }
@@ -119,6 +122,12 @@ public class Document implements Serializable {
         this.description = description;
     }
 
+    /**
+     * Set document description
+     *
+     * @param description {@link #description}
+     * @return {@link #Document}
+     */
     public Document withDescription(String description) {
         this.description = description;
         return this;
@@ -129,6 +138,7 @@ public class Document implements Serializable {
      *
      * @return {@link #docDate}
      */
+
     public LocalDate getDocDate() {
         return docDate;
     }
@@ -142,6 +152,12 @@ public class Document implements Serializable {
         this.docDate = docDate;
     }
 
+    /**
+     * Set document date
+     *
+     * @param docDate {@link #docDate}
+     * @return {@link #Document}
+     */
     public Document withDocDate(LocalDate docDate) {
         this.docDate = docDate;
         return this;

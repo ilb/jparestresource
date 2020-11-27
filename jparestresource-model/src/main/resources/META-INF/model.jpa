@@ -1,91 +1,91 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<jpa:entity-mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" ptype="MONOLITH" ppkg="ru.ilb.jparestresource" epkg="model" v="3.1" rws="_14881688460591" Pws="_14881688460591" cws="_14881688460591" persistenceUnitName="jparestresource" sm="false" xs="true" id="_14855761330684" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd">
-    <jpa:description>jparestresource model</jpa:description>
-    <jpa:entity compositePrimaryKeyClass="DocfilePK" abs="false" class="Docfile" v="true" jbn="false" xre="true" m="false" rootElement="_14855761330684" id="_14855761330685">
-        <jpa:annotation e="true" n="@ru.ilb.common.jpa.history.AutoHistory"/>
-        <jpa:attributes>
-            <jpa:basic optional="true" attribute-type="String" v="true" xvt="" name="comment" id="_14855761330778">
-                <jpa:des>File comment</jpa:des>
-                <jpa:xwm nil="false" req="false"/>
-                <jpa:xm nil="false" req="false"/>
-            </jpa:basic>
-            <jpa:basic optional="true" attribute-type="Boolean" v="true" xvt="" name="confirm" id="_14855761330779">
-                <jpa:des>Confirmation status</jpa:des>
-                <jpa:xwm nil="false" req="false"/>
-                <jpa:xm nil="false" req="false"/>
-            </jpa:basic>
-            <jpa:basic optional="true" attribute-type="String" v="true" xvt="" name="userName" id="_148557613307711">
-                <jpa:des>User created</jpa:des>
-                <jpa:xwm nil="false" req="false"/>
-                <jpa:xm nil="false" req="false"/>
-            </jpa:basic>
-            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_14855761330696" connected-attribute-id="_1527073199140125" v="true" xvt="" name="document" id="_1527073199132124">
-                <jpa:xwm/>
-                <jpa:xm/>
-            </jpa:many-to-one>
-            <jpa:id attribute-type="Long" v="true" xvt="" name="id" id="_14855761330767">
-                <jpa:xwm nil="false" req="false"/>
-                <jpa:xm nil="false" req="false"/>
-                <jpa:column unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
-                <jpa:generated-value strategy="AUTO"/>
-            </jpa:id>
-        </jpa:attributes>
-    </jpa:entity>
-    <jpa:entity lbl-ref="_148557613307718" compositePrimaryKeyClass="DocumentPK" abs="false" class="Document" v="true" jbn="false" xre="true" m="false" rootElement="_14855761330684" id="_14855761330696">
-        <jpa:annotation e="true" n="@ru.ilb.common.jpa.history.AutoHistory"/>
-        <jpa:attributes>
-            <jpa:basic optional="true" attribute-type="String" v="true" xvt="E" name="displayName" id="_148557613307718">
-                <jpa:des>Document name</jpa:des>
-                <jpa:xwm nil="false" req="false"/>
-                <jpa:xm nil="false" req="false"/>
-                <jpa:bv>
-                    <jpa:si mi="1" ma="255" m="must be beweeen 1 and 255 chars"/>
-                </jpa:bv>
-            </jpa:basic>
-            <jpa:basic optional="true" attribute-type="String" v="true" xvt="" name="description" id="_148557613307716">
-                <jpa:des>Document description</jpa:des>
-                <jpa:xwm nil="false" req="false"/>
-                <jpa:xm nil="false" req="false"/>
-            </jpa:basic>
-            <jpa:basic optional="true" attribute-type="java.time.LocalDate" v="true" xvt="" name="docDate" id="_148557613307719">
-                <jpa:des>Document date</jpa:des>
-                <jpa:xwm nil="false" req="false"/>
-                <jpa:xm nil="false" req="false"/>
-            </jpa:basic>
-            <jpa:one-to-many orp="true" collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_14855761330685" connected-attribute-id="_1527073199132124" v="true" xvt="" name="docfiles" id="_1527073199140125">
-                <jpa:xwm/>
-                <jpa:xm/>
-                <jpa:an e="true" n="@org.eclipse.persistence.annotations.CascadeOnDelete"/>
-                <jpa:cascade>
-                    <jpa:cascade-all/>
-                </jpa:cascade>
-            </jpa:one-to-many>
-            <jpa:one-to-one own="true" orp="true" optional="true" primaryKey="false" connected-entity-id="_14855761330696" v="true" xvt="" name="document" id="_1535367981111300">
-                <jpa:xwm/>
-                <jpa:xm/>
-                <jpa:an e="true" n="@org.eclipse.persistence.annotations.CascadeOnDelete"/>
-                <jpa:cascade>
-                    <jpa:cascade-all/>
-                </jpa:cascade>
-            </jpa:one-to-one>
-            <jpa:id attribute-type="Long" v="true" xvt="" name="id" id="_148557613307715">
-                <jpa:xwm nil="false" req="false"/>
-                <jpa:xm nil="false" req="false"/>
-                <jpa:column unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
-                <jpa:generated-value strategy="AUTO"/>
-            </jpa:id>
-        </jpa:attributes>
-        <jpa:table>
-            <jpa:index n="" u="false">
-                <jpa:c c="DOCDATE"/>
-            </jpa:index>
-        </jpa:table>
-    </jpa:entity>
-    <jpa:snp loc="BEFORE_PACKAGE" e="true">/**
+<entity-mappings ptype="MONOLITH" ppkg="ru.ilb.jparestresource" epkg="model" v="3.1" rws="_14881688460591" Pws="_14881688460591" cws="_14881688460591" persistenceUnitName="jparestresource" sm="false" xs="true" id="_14855761330684" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <description>jparestresource model</description>
+    <entity compositePrimaryKeyClass="DocfilePK" abs="false" class="Docfile" v="true" jbn="false" xre="true" m="false" rootElement="_14855761330684" id="_14855761330685">
+        <annotation e="true" n="@ru.ilb.common.jpa.history.AutoHistory"/>
+        <attributes>
+            <basic optional="true" attribute-type="String" v="true" xvt="" name="comment" id="_14855761330778">
+                <des>File comment</des>
+                <xwm nil="false" req="false"/>
+                <xm nil="false" req="false"/>
+            </basic>
+            <basic optional="true" attribute-type="Boolean" v="true" xvt="" name="confirm" id="_14855761330779">
+                <des>Confirmation status</des>
+                <xwm nil="false" req="false"/>
+                <xm nil="false" req="false"/>
+            </basic>
+            <basic optional="true" attribute-type="String" v="true" xvt="" name="userName" id="_148557613307711">
+                <des>User created</des>
+                <xwm nil="false" req="false"/>
+                <xm nil="false" req="false"/>
+            </basic>
+            <many-to-one optional="true" primaryKey="false" connected-entity-id="_14855761330696" connected-attribute-id="_1527073199140125" v="true" xvt="" name="document" id="_1527073199132124">
+                <xwm/>
+                <xm/>
+            </many-to-one>
+            <id attribute-type="Long" v="true" xvt="" name="id" id="_14855761330767">
+                <xwm nil="false" req="false"/>
+                <xm nil="false" req="false"/>
+                <column unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                <generated-value strategy="AUTO"/>
+            </id>
+        </attributes>
+    </entity>
+    <entity lbl-ref="_148557613307718" compositePrimaryKeyClass="DocumentPK" abs="false" class="Document" v="true" jbn="false" xre="true" m="false" rootElement="_14855761330684" id="_14855761330696">
+        <annotation e="true" n="@ru.ilb.common.jpa.history.AutoHistory"/>
+        <attributes>
+            <basic optional="true" attribute-type="String" v="true" xvt="E" name="displayName" id="_148557613307718">
+                <des>Document name</des>
+                <xwm nil="false" req="false"/>
+                <xm nil="false" req="false"/>
+                <bv>
+                    <si mi="1" ma="255" m="must be beweeen 1 and 255 chars"/>
+                </bv>
+            </basic>
+            <basic optional="true" attribute-type="String" v="true" xvt="" name="description" id="_148557613307716">
+                <des>Document description</des>
+                <xwm nil="false" req="false"/>
+                <xm nil="false" req="false"/>
+            </basic>
+            <basic optional="true" attribute-type="java.time.LocalDate" v="true" xvt="" name="docDate" id="_148557613307719">
+                <des>Document date</des>
+                <xwm nil="false" req="false"/>
+                <xm nil="false" req="false"/>
+            </basic>
+            <one-to-many orp="true" collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_14855761330685" connected-attribute-id="_1527073199132124" v="true" xvt="" name="docfiles" id="_1527073199140125">
+                <xwm/>
+                <xm/>
+                <an e="true" n="@org.eclipse.persistence.annotations.CascadeOnDelete"/>
+                <cascade>
+                    <cascade-all/>
+                </cascade>
+            </one-to-many>
+            <one-to-one own="true" orp="true" optional="true" primaryKey="false" connected-entity-id="_14855761330696" v="true" xvt="" name="document" id="_1535367981111300">
+                <xwm/>
+                <xm/>
+                <an e="true" n="@org.eclipse.persistence.annotations.CascadeOnDelete"/>
+                <cascade>
+                    <cascade-all/>
+                </cascade>
+            </one-to-one>
+            <id attribute-type="Long" v="true" xvt="" name="id" id="_148557613307715">
+                <xwm nil="false" req="false"/>
+                <xm nil="false" req="false"/>
+                <column unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                <generated-value strategy="AUTO"/>
+            </id>
+        </attributes>
+        <table>
+            <index n="" u="false">
+                <c c="DOCDATE"/>
+            </index>
+        </table>
+    </entity>
+    <snp loc="BEFORE_PACKAGE" e="true">/**
         * This file was generated by the JPA Modeler
-        */</jpa:snp>
-    <jpa:inf e="true" n="java.io.Serializable"/>
-    <jpa:c>
+        */</snp>
+    <inf e="true" n="java.io.Serializable"/>
+    <c>
         <ct>java.util.List</ct>
         <ct>java.util.Set</ct>
         <ct>java.util.Map</ct>
@@ -95,11 +95,11 @@
         <cit>java.util.HashSet</cit>
         <cit>java.util.TreeSet</cit>
         <cit>java.util.HashMap</cit>
-    </jpa:c>
-    <jpa:wsl>
-        <jpa:ws n="Main" id="_14881688460591">
+    </c>
+    <wsl>
+        <ws n="Main" id="_14881688460591">
             <i ref="_14855761330685" x="419" y="190"/>
             <i ref="_14855761330696" x="144" y="73"/>
-        </jpa:ws>
-    </jpa:wsl>
-</jpa:entity-mappings>
+        </ws>
+    </wsl>
+</entity-mappings>

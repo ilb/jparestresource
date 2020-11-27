@@ -25,25 +25,21 @@ public class Docfile implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false)
     private Long id;
-
     /**
      * File comment
      */
     @Basic
     private String comment;
-
     /**
      * Confirmation status
      */
     @Basic
     private Boolean confirm;
-
     /**
      * User created
      */
     @Basic
     private String userName;
-
     @ManyToOne(fetch = FetchType.LAZY)
     private Document document;
 
@@ -65,6 +61,7 @@ public class Docfile implements Serializable {
      *
      * @return {@link #comment}
      */
+
     public String getComment() {
         return comment;
     }
@@ -78,6 +75,12 @@ public class Docfile implements Serializable {
         this.comment = comment;
     }
 
+    /**
+     * Set file comment
+     *
+     * @param comment {@link #comment}
+     * @return {@link #Docfile}
+     */
     public Docfile withComment(String comment) {
         this.comment = comment;
         return this;
@@ -88,7 +91,8 @@ public class Docfile implements Serializable {
      *
      * @return {@link #confirm}
      */
-    public Boolean isConfirm() {
+
+    public Boolean getConfirm() {
         return confirm;
     }
 
@@ -101,6 +105,12 @@ public class Docfile implements Serializable {
         this.confirm = confirm;
     }
 
+    /**
+     * Set confirmation status
+     *
+     * @param confirm {@link #confirm}
+     * @return {@link #Docfile}
+     */
     public Docfile withConfirm(Boolean confirm) {
         this.confirm = confirm;
         return this;
@@ -111,6 +121,7 @@ public class Docfile implements Serializable {
      *
      * @return {@link #userName}
      */
+
     public String getUserName() {
         return userName;
     }
@@ -124,6 +135,12 @@ public class Docfile implements Serializable {
         this.userName = userName;
     }
 
+    /**
+     * Set user created
+     *
+     * @param userName {@link #userName}
+     * @return {@link #Docfile}
+     */
     public Docfile withUserName(String userName) {
         this.userName = userName;
         return this;
