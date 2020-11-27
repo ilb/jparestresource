@@ -57,7 +57,7 @@ public class Document implements Serializable {
     private Document document;
     @OneToMany(mappedBy = "document", orphanRemoval = true, cascade = CascadeType.ALL)
     @CascadeOnDelete
-    @XmlTransient
+    @XmlElementRef
     private List<Docfile> docfiles;
 
     public Long getId() {

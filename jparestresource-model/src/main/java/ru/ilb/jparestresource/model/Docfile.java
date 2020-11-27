@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.xml.bind.annotation.*;
+import org.eclipse.persistence.oxm.annotations.XmlInverseReference;
 import ru.ilb.common.jpa.history.AutoHistory;
 
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -41,6 +42,7 @@ public class Docfile implements Serializable {
     @Basic
     private String userName;
     @ManyToOne(fetch = FetchType.LAZY)
+    @XmlInverseReference(mappedBy = "docfiles")
     private Document document;
 
     public Long getId() {

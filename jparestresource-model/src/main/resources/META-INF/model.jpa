@@ -19,7 +19,7 @@
                 <xwm nil="false" req="false"/>
                 <xm nil="false" req="false"/>
             </basic>
-            <many-to-one optional="true" primaryKey="false" connected-entity-id="_14855761330696" connected-attribute-id="_1527073199140125" v="true" xvt="" name="document" id="_1527073199132124">
+            <many-to-one optional="true" primaryKey="false" connected-entity-id="_14855761330696" connected-attribute-id="_1527073199140125" v="true" xvt="I_E" name="document" id="_1527073199132124">
                 <xwm/>
                 <xm/>
             </many-to-one>
@@ -52,7 +52,7 @@
                 <xwm nil="false" req="false"/>
                 <xm nil="false" req="false"/>
             </basic>
-            <one-to-many orp="true" collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_14855761330685" connected-attribute-id="_1527073199132124" v="true" xvt="" name="docfiles" id="_1527073199140125">
+            <one-to-many orp="true" collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_14855761330685" connected-attribute-id="_1527073199132124" v="true" xvt="E_R" name="docfiles" id="_1527073199140125">
                 <xwm/>
                 <xm/>
                 <an e="true" n="@org.eclipse.persistence.annotations.CascadeOnDelete"/>
