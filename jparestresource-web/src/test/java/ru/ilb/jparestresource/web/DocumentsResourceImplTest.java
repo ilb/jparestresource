@@ -15,16 +15,25 @@
  */
 package ru.ilb.jparestresource.web;
 
+import java.io.InputStream;
 import javax.inject.Inject;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.transform.stream.StreamSource;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
+import ru.ilb.common.jaxb.util.JaxbUtil;
 import ru.ilb.jparestresource.api.DocumentsResource;
+import ru.ilb.jparestresource.view.Document;
 import ru.ilb.jparestresource.view.Documents;
 
 /**
@@ -32,6 +41,7 @@ import ru.ilb.jparestresource.view.Documents;
  * @author slavb
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@TestMethodOrder(OrderAnnotation.class)
 public class DocumentsResourceImplTest {
 
     @LocalServerPort
@@ -40,7 +50,14 @@ public class DocumentsResourceImplTest {
     @Inject
     private DocumentsResourceSupport documentsResourceSupport;
 
+    private final JAXBContext jaxbContext;
+
     public DocumentsResourceImplTest() {
+        try {
+            jaxbContext = JAXBContext.newInstance("ru.ilb.jparestresource.view");
+        } catch (JAXBException ex) {
+            throw new RuntimeException(ex);
+        }
     }
 
     @BeforeAll
@@ -59,10 +76,20 @@ public class DocumentsResourceImplTest {
     public void tearDown() {
     }
 
+    @Test
+    @Order(1)
+    public void testCreate() {
+        InputStream resource = this.getClass().getClassLoader().getResourceAsStream("test/createDocumentXml.xml");
+        Document document = JaxbUtil.unmarshal(jaxbContext, new StreamSource(resource), Document.class, "application/xml");
+        DocumentsResource instance = documentsResourceSupport.getDocumentsResource(randomPort);
+        instance.create(document);
+    }
+
     /**
      * Test of list method, of class DocumentsResourceImpl.
      */
     @Test
+    @Order(999)
     public void testList() {
         System.out.println("list");
         Integer limit = null;

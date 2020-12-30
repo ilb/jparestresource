@@ -148,6 +148,10 @@ public class Docfile implements Serializable {
         return this;
     }
 
+    public void addComment(String comment) {
+        this.comment = this.comment + comment;
+    }
+
     public Document getDocument() {
         return document;
     }

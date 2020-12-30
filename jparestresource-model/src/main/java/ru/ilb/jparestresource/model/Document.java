@@ -78,7 +78,6 @@ public class Document implements Serializable {
      *
      * @return {@link #displayName}
      */
-
     public String getDisplayName() {
         return displayName;
     }
@@ -108,7 +107,6 @@ public class Document implements Serializable {
      *
      * @return {@link #description}
      */
-
     public String getDescription() {
         return description;
     }
@@ -138,7 +136,6 @@ public class Document implements Serializable {
      *
      * @return {@link #docDate}
      */
-
     public LocalDate getDocDate() {
         return docDate;
     }
@@ -174,6 +171,14 @@ public class Document implements Serializable {
     public Document withDocument(Document document) {
         this.document = document;
         return this;
+    }
+
+    public void addDoc(Docfile doc) {
+        this.getDocfiles().add(doc);
+    }
+
+    public void addDoc2(Docfile doc) {
+        this.getDocfiles().add(doc);
     }
 
     public List<Docfile> getDocfiles() {

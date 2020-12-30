@@ -24,7 +24,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.JpaProperties;
-import org.springframework.boot.autoconfigure.transaction.TransactionManagerCustomizers;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.AdviceMode;
 import org.springframework.context.annotation.ComponentScan;
@@ -48,10 +47,8 @@ import org.springframework.transaction.jta.JtaTransactionManager;
 @EnableCaching(mode = AdviceMode.ASPECTJ)
 public class Application extends JpaBaseConfiguration {
 
-    public Application(DataSource dataSource, JpaProperties properties,
-            ObjectProvider<JtaTransactionManager> jtaTransactionManager,
-            ObjectProvider<TransactionManagerCustomizers> transactionManagerCustomizers) {
-        super(dataSource, properties, jtaTransactionManager, transactionManagerCustomizers);
+    public Application(DataSource dataSource, JpaProperties properties, ObjectProvider<JtaTransactionManager> jtaTransactionManager) {
+        super(dataSource, properties, jtaTransactionManager);
     }
 //
 //    @Autowired
