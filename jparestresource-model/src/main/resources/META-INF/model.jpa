@@ -57,6 +57,7 @@
                 <xwm/>
                 <xm/>
                 <an e="true" n="@org.eclipse.persistence.annotations.Convert(&quot;uuid&quot;)"/>
+                <column unique="true" nullable="true" insertable="true" updatable="true"/>
             </basic>
             <one-to-many orp="true" collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_14855761330685" connected-attribute-id="_1527073199132124" v="true" xvt="E_R" name="docfiles" id="_1527073199140125">
                 <xwm/>

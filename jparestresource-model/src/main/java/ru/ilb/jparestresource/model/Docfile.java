@@ -63,7 +63,6 @@ public class Docfile implements Serializable {
      *
      * @return {@link #comment}
      */
-
     public String getComment() {
         return comment;
     }
@@ -93,7 +92,6 @@ public class Docfile implements Serializable {
      *
      * @return {@link #confirm}
      */
-
     public Boolean getConfirm() {
         return confirm;
     }
@@ -123,7 +121,6 @@ public class Docfile implements Serializable {
      *
      * @return {@link #userName}
      */
-
     public String getUserName() {
         return userName;
     }

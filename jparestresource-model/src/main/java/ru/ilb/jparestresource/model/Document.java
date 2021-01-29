@@ -58,6 +58,7 @@ public class Document implements Serializable {
      * UUID документа
      */
     @Basic
+    @Column(unique = true)
     @Convert("uuid")
     private UUID uid;
     @OneToOne(fetch = FetchType.LAZY, orphanRemoval = true, cascade = CascadeType.ALL)
@@ -86,6 +87,7 @@ public class Document implements Serializable {
      *
      * @return {@link #displayName}
      */
+
     public String getDisplayName() {
         return displayName;
     }
@@ -115,6 +117,7 @@ public class Document implements Serializable {
      *
      * @return {@link #description}
      */
+
     public String getDescription() {
         return description;
     }
@@ -144,6 +147,7 @@ public class Document implements Serializable {
      *
      * @return {@link #docDate}
      */
+
     public LocalDate getDocDate() {
         return docDate;
     }
