@@ -52,6 +52,12 @@
                 <xwm nil="false" req="false"/>
                 <xm nil="false" req="false"/>
             </basic>
+            <basic attribute-type="java.util.UUID" v="true" xvt="" name="uid" id="_16113029655557">
+                <des>UUID документа</des>
+                <xwm/>
+                <xm/>
+                <an e="true" n="@org.eclipse.persistence.annotations.Convert(&quot;uuid&quot;)"/>
+            </basic>
             <one-to-many orp="true" collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_14855761330685" connected-attribute-id="_1527073199132124" v="true" xvt="E_R" name="docfiles" id="_1527073199140125">
                 <xwm/>
                 <xm/>
@@ -75,6 +81,9 @@
                 <generated-value strategy="AUTO"/>
             </id>
         </attributes>
+        <nq e="false" name="Document.findByUid">
+            <query>Select d from Document d where d.uid=:uid</query>
+        </nq>
         <table>
             <index n="" u="false">
                 <c c="DOCDATE"/>

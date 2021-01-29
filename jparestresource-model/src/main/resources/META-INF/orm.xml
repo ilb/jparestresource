@@ -2,6 +2,7 @@
 <entity-mappings xmlns="http://www.eclipse.org/eclipselink/xsds/persistence/orm"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  version="2.5">
+    <converter name="uuid" class="ru.ilb.common.jpa.converters.UUIDConverterUniversal"/>
     <persistence-unit-metadata>
         <persistence-unit-defaults>
             <entity-listeners>

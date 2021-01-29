@@ -15,6 +15,7 @@
  */
 package ru.ilb.jparestresource.usecases;
 
+import java.util.UUID;
 import javax.inject.Named;
 import ru.ilb.jparestresource.model.Document;
 import ru.ilb.jparestresource.repositories.DocumentRepository;
@@ -34,6 +35,9 @@ public class CreateDocument {
     }
 
     public Document execute(Document document) {
+        if (document.getUid() == null) {
+            document.setUid(UUID.randomUUID());
+        }
         return documentRepository.save(document);
     }
 

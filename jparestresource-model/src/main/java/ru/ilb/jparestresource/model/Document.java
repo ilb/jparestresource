@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -22,6 +23,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.*;
 import org.eclipse.persistence.annotations.CascadeOnDelete;
+import org.eclipse.persistence.annotations.Convert;
 import ru.ilb.common.jpa.history.AutoHistory;
 
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -52,6 +54,12 @@ public class Document implements Serializable {
      */
     @Basic
     private LocalDate docDate;
+    /**
+     * UUID документа
+     */
+    @Basic
+    @Convert("uuid")
+    private UUID uid;
     @OneToOne(fetch = FetchType.LAZY, orphanRemoval = true, cascade = CascadeType.ALL)
     @CascadeOnDelete
     private Document document;
@@ -157,6 +165,35 @@ public class Document implements Serializable {
      */
     public Document withDocDate(LocalDate docDate) {
         this.docDate = docDate;
+        return this;
+    }
+
+    /**
+     * Get UUID документа
+     *
+     * @return {@link #uid}
+     */
+    public UUID getUid() {
+        return uid;
+    }
+
+    /**
+     * Set UUID документа
+     *
+     * @param uid {@link #uid}
+     */
+    public void setUid(UUID uid) {
+        this.uid = uid;
+    }
+
+    /**
+     * Set UUID документа
+     *
+     * @param uid {@link #uid}
+     * @return {@link #Document}
+     */
+    public Document withUid(UUID uid) {
+        this.uid = uid;
         return this;
     }
 

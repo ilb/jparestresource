@@ -46,7 +46,7 @@
         <apache-cxf.version>3.3.6</apache-cxf.version>
         <eclipselink.version>2.7.6</eclipselink.version>
         <spring.boot.version>2.4.1</spring.boot.version>
-        <ilb-common.version>1.35</ilb-common.version>
+        <ilb-common.version>1.36-SNAPSHOT</ilb-common.version>
         <!--<maven.test.skip>true</maven.test.skip>-->
     </properties>
     <dependencyManagement>
